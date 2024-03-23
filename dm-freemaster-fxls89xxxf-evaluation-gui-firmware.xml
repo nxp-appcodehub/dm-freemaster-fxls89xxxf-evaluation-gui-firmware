@@ -1,0 +1,30 @@
+<data:item xmlns:data="data" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="data ../../xsd/alp.xsd" id="dm-freemaster-fxls89xxxf-evaluation-gui-firmware" type="demo" format="projectfile" versionSchema="1.0.0" name="freemaster fxls89xxxf evaluation gui firmware">
+    <display_title>
+        This example demonstrates FXLS89xxxF 3-axis accelerometer evaluation GUI using ISSDK and FreeMASTER
+    </display_title>
+    <overview>
+        <![CDATA[<ul><li>This example demonstrates combining ISSDK and FreeMASTER to create FXLS89xxxF 3-axis accelerometer evaluation GUI for our customer to evaluate this sensor using sensor development tools with sensors expansion boards.</li><li>NXP’s next-generation accelerometer feature a strong balance of intelligent integration, logic and customizable platform software to enable smarter, more differentiated applications<br /></li><li>This example demonstrates how we can combine multiple middleware(s)  (e.g. ISSDK, FreeMASTER) to develop evaluation tools that helps improve "ease of evaluation and development" for our customers using our parts.</li></ul>]]>
+    </overview>
+    <toolchains>
+        <toolchain name="mcux"></toolchain>
+    </toolchains>
+    <families>
+        <family name="mcx"></family>
+    </families>
+    <nxp_compatible_hw>
+        <hw id="FRDM-MCXN947"></hw>
+    </nxp_compatible_hw>
+    <nxp_ebh_hw>
+        <ebh id="mikroe_accel_4_click"></ebh>
+        <ebh id="nxp_frdm_stbi_a8974"></ebh>
+    </nxp_ebh_hw>
+    <peripherals>
+        <peripheral name="i2c"></peripheral>
+        <peripheral name="sensor"></peripheral>
+        <peripheral name="uart"></peripheral>
+    </peripherals>
+    <categories>
+        <category name="sensor"></category>
+        <category name="tools"></category>
+    </categories>
+</data:item>

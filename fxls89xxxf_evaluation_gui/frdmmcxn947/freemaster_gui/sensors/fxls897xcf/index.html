@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- CSS -->
+  <link rel="stylesheet" type="text/css" href="../../css/style.css">
+  <link rel="stylesheet" type="text/css" href="../../css/bootstrap.css">
+ 
+  <!-- JavScript -->
+  <!-- FreeMASTER -->
+  <script type="text/javascript" src="../../js/simple-jsonrpc-js.js"></script>
+  <script type="text/javascript" src="../../js/fmng-client.js"></script>
+  
+  <!-- DOM manipulation -->
+  <script type="text/javascript" src="../../js/jquery-3.4.1.js"></script>      <!-- jQuery v3.4.1 -> https://jquery.com/download/ -->
+  <script type="text/javascript" src="../../js/d3.min.js"></script>
+  
+  <!-- UI -->
+  <script type="text/javascript" src="../../js/popper.js"></script>            <!-- Popper.JS 1.15 -> https://github.com/FezVrasta/popper.js/releases -->
+  <script type="text/javascript" src="../../js/bootstrap.js"></script>         <!-- Bootstrap v4.3.1 -> https://getbootstrap.com/docs/4.3/getting-started/download/ -->
+  <script type="text/javascript" src="../../js/Chart.bundle.js"></script>      <!-- ChartJS v2.7.2 -> https://github.com/chartjs/Chart.js/releases -->
+  
+  <!-- Utility -->
+  <script type="text/javascript" src="../../js/jquery.csv.js"></script>
+  <script type="text/javascript" src="../../js/FileSaver.js"></script>
+  <script type="text/javascript" src="../../js/register-tab.js"></script>
+
+  <!-- Thermometer -->
+  <script type="text/javascript" src="../../js/jquery-ui-1.12.1.js"></script>
+  <script type="text/javascript" src="../../js/jquery.thermometer.js"></script> <!-- jQuery Thermometer -> http://david.dupplaw.me.uk/developer/jquery-thermometer -->
+</head>
+<body onload="start_page()">
+  <div class="header">
+    <a href="http://www.nxp.com" target="_BLANK"><img src="../../resources/nxp_logo.png" align="right" alt="NXP logo" /></a>
+    <h1>FreeMASTER FXLS897xCF 3-axis Accelerometer Demo</h1>
+  </div>
+  <ul class="nav nav-tabs nav-fill">
+    <li class="nav-item">
+      <a class="nav-link active" href="#demo-tab">FXLS897xCF 3-axis Accelerometer Demo</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#register-tab">FXLS897xCF Register Page</a>
+    </li>
+  </ul>
+  <div class="tab-content">
+    <div class="tab-pane active" id="demo-tab">
+      <div class="body">
+        <h3>FreeMASTER FXLS897xCF Demo</h3>
+        <ul class="simple">
+          <li>This Demo is using FRDM-STBI-A897x shield board having FXLS897xCF 3-axis Accelerometer connected to MCX-N (refer to Demo Details tab for more details)</li>
+          <li>The demo showcase reading of FXLS897xCF registers, embedded events and communicating to host using FreeMASTER serial communication driver.</li>
+          <li>The demo also showcase updating (writing) FXLS897xCF registers configuration from host using FreeMASTER serial communication driver.</li>
+        </ul>
+      </div>
+      <div class="border border-dark b-3">
+        <!-- border -> https://getbootstrap.com/docs/4.3/utilities/borders/ -->
+        <div class="container-fluid">
+          <!-- grid (container, row, col-x)-> https://getbootstrap.com/docs/4.3/layout/grid/ -->
+          <div class="row">
+            <div class="col-2 p-3">
+              <div class="border border-dark h-100">
+                <div align="center">
+                  <span class="font-weight-bold px-3">FS Range/ODR Selection</span>
+                  <div class="pb-3 pt-1 px-3 ">
+                    <div class="form-group mb-0">
+                      <br>
+                      <label>Full Scale Range</label>
+                      <select id="fs_select" class="form-control">
+                        <option value=-1>Select option</option>
+                      </select>
+                      <br>
+                      <br>
+                      <label>Wake ODR (in Hz)</label>
+                      <select id="odr_select" class="form-control">
+                        <option value=-1>Select option</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--<div class="row">  -->
+            <div class="col-4 p-3">
+              <div class="border border-dark h-100">
+                <div align="center">
+                  <span class="font-weight-bold px-3" >Offset/Noise Calculation</span>  <!-- text -> https://getbootstrap.com/docs/4.3/utilities/text/-->
+                  <br>
+                  <span class="font-italic px-3">(Offset units = g and Noise units = rms(g))</span>
+                </div>
+                <div class="p-3">
+                  <div class="row">
+                    <!-- col-sm without additional suffix will split the available space evently among all cells -->
+                    <!-- you can play with it by adding -n suffix and see how it chnages in ui -->
+                    <!-- also try resizing the window to see its behavior on different screen sizes   col-sm-3-->
+                    <div class="col-4 text-center">
+                      <label for="text_area_11" class="col-form-label">X_Offset </label>
+                      <input class="form-control" type="text" id="text_area_11" readonly>
+                    </div>
+                    <div class="col-4  text-center">
+                      <label for="text_area_12" class="col-form-label">Y_Offset </label>
+                      <input class="form-control" type="text" id="text_area_12" readonly>
+                    </div>
+                    <div class="col-4  text-center">
+                      <label for="text_area_13" class="col-form-label">Z_Offset </label>
+                      <input class="form-control" type="text" id="text_area_13" readonly>
+                    </div>
+                  </div>
+                  </br>
+                  <div class="row">
+                    <div class="col-4  text-center">
+                      <label for="text_area_21" class="col-form-label text-center">X_rms </label>
+                      <input class="form-control" type="text" id="text_area_21" readonly>
+                    </div>
+                    <div class="col-4  text-center">
+                      <label for="text_area_22" class="col-form-label text-center">Y_rms </label>
+                      <input class="form-control" type="text" id="text_area_22" readonly>
+                    </div>
+                    <div class="col-4   text-center">
+                      <label for="text_area_23" class="col-form-label text-center">Z_rms </label>
+                      <input class="form-control" type="text" id="text_area_23" readonly>
+                    </div>
+                  </div>
+                  </br>
+                  </br>
+                  <div class="row">
+                    <!-- this row will have a single full width cell with a button-->
+                    <div class="col">
+                      <button id="calculate_button" type="button" class="btn btn-primary btn-block">Calculate Offset and Noise</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-4 p-3">
+              <div class="border border-dark h-100">
+                <div align="center">
+                  <span class="font-weight-bold px-3" > Self-Test </span> <!-- text -> https://getbootstrap.com/docs/4.3/utilities/text/-->
+                  <br>
+                  <span class="font-italic px-3">(compute STOC and STOF)</span> 
+                </div>
+                <div class="p-3">
+                  <div class="row">
+                    <!-- col-sm without additional suffix will split the available space evently among all cells -->
+                    <!-- you can play with it by adding -n suffix and see how it chnages in ui -->
+                    <!-- also try resizing the window to see its behavior on different screen sizes -->
+                    <div class="col-4 text-center">
+                      <label for="text_area_14" class="col-form-label">X_STOC </label>
+                      <input class="form-control" type="text" id="text_area_14" readonly>
+                    </div>
+                    <div class="col-4 text-center">
+                      <label for="text_area_15" class="col-form-label">Y_STOC </label>
+                      <input class="form-control" type="text" id="text_area_15" readonly>
+                    </div>
+                    <div class="col-4 text-center">
+                      <label for="text_area_16" class="col-form-label">Z_STOC </label>
+                      <input class="form-control" type="text" id="text_area_16" readonly>
+                    </div>
+                  </div>
+                  </br>
+                  <div class="row">
+                    <div class="col-4 text-center">
+                      <label for="text_area_24" class="col-form-label text-center">X_STOF </label>
+                      <input class="form-control" type="text" id="text_area_24" readonly>
+                    </div>
+                    <div class="col-4 text-center">
+                      <label for="text_area_25" class="col-form-label text-center">Y_STOF </label>
+                      <input class="form-control" type="text" id="text_area_25" readonly>
+                    </div>
+                    <div class="col-4  text-center">
+                      <label for="text_area_26" class="col-form-label text-center">Z_STOF </label>
+                      <input class="form-control" type="text" id="text_area_26" readonly>
+                    </div>
+                  </div>
+                  </br>
+                  </br>
+                  <div class="row">
+                    <!-- this row will have a single full width cell with a button-->
+                    <div class="col">
+                      <button id="selftest_button" type="button" class="btn btn-primary btn-block">Perform Self-Test</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-2 p-3">
+              <div class="border border-dark h-60">
+                <!-- padding / margins (p-x) -> https://getbootstrap.com/docs/4.3/utilities/spacing/-->
+                <div align="center">
+                  <span class="font-weight-bold px-3"> Power Control Selection</span>  <!-- text -> https://getbootstrap.com/docs/4.3/utilities/text/-->
+                  <div class="p-3">
+                    <div class="form-group pt-4 mb-0">
+                      <label>Wake Power Mode</label>
+                      <select id="mods_select" class="form-control">
+                        <option value=-1>Select option</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+                <div align="center">
+                  <span class="font-weight-bold px-3"> Temperature(DegC)</span>  <!-- text -> https://getbootstrap.com/docs/4.3/utilities/text/-->
+					<div id="thermometer"></div>
+					<input class="form-control" type="text" id="text_area_thermometer" readonly="">
+                </div>
+            </div>
+          </div>
+          <div class="row">
+<!--            <div class="col-4 p-3">
+              <div class="border border-dark h-100">
+                <div class="text-center">
+                  <img id="pos_img" src="../../resources/orient.gif" height="200px" width="300px">
+                  <p>Change static orientation</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-4 p-3">
+              <div class="border border-dark h-100">
+                <div class="text-center">
+                  <img id="fall_img" src="../../resources/freefall.gif" height="200px" width="300px">
+                  <p>Perform a freefall</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-4 p-3">
+              <div class="border border-dark h-100">
+                <div class="text-center">
+                  <img id="tap_img" src="../../resources/touch.gif" height="200px" width="300px">
+                  <p>Tap the board</p>
+                </div>
+              </div>
+            </div>
+             <div class="col-3 p-3">
+              <div class="border border-dark h-100">
+                <div class="text-center">
+                  <img id="vecm_img" src="../../resources/vecm.gif" height="200px" width="200px">
+                  <p>Wave the board in figure 8 motion</p>
+                </div>
+              </div>
+            </div> -->
+          </div>
+          <br>
+          <div class="row-1">
+            <div class="col-md border border-dark mx-3 mb-3 pt-4 " style= "position:relative; height:40vh; width: 90vw">
+              <canvas id="canvas"></canvas>
+           </div>
+		   <BR>
+          <div class="row-2">
+            </div>
+            <div class="col-md border border-dark mx-3 mb-3 pt-4 " style= "position:relative; height:30vh; width: 90vw">
+              <canvas id="canvas2"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="tab-pane" id="register-tab">
+      <div class="body">
+        <a href="https://www.nxp.com/products/sensors/motion-sensors/3-axis/2g-4g-8g-16g-low-power-12-bit-digital-accelerometer:FXLS8962AF" target="_blank">FXLS8974CF Sensor DataSheet: Quick Reference</a>
+      </div>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-4">
+            FXLS897xCF Sensor Register Map
+            <div class="container tree-container"></div>
+          </div>
+          <div class="col-6">
+            Register Bit-Fields Details
+            <div class="container table-container">
+              <div class="row">
+                <div class="col-table">Bit-7</div>
+                <div class="col-table">Bit-6</div>
+                <div class="col-table">Bit-5</div>
+                <div class="col-table">Bit-4</div>
+                <div class="col-table">Bit-3</div>
+                <div class="col-table">Bit-2</div>
+                <div class="col-table">Bit-1</div>
+                <div class="col-table">Bit-0</div>
+              </div>
+              <div id="reg_decs" class="row">
+                <div class="col-table">-</div>
+                <div class="col-table">-</div>
+                <div class="col-table">-</div>
+                <div class="col-table">-</div>
+                <div class="col-table">-</div>
+                <div class="col-table">-</div>
+                <div class="col-table">-</div>
+                <div class="col-table">-</div>
+              </div>
+              <div id="reg_val" class="row">
+                <div class="col-table">0</div>
+                <div class="col-table">0</div>
+                <div class="col-table">0</div>
+                <div class="col-table">0</div>
+                <div class="col-table">0</div>
+                <div class="col-table">0</div>
+                <div class="col-table">0</div>
+                <div class="col-table">0</div>
+              </div>
+            </div>
+            <BR>
+            Register Bit-Fields Description
+            <div id="description" class="container table-container">
+              <div class="row bordered header">
+                Description
+              </div>
+            </div>
+          </div>
+          <div class="col-2 form-controls">
+            <div class="form-group">
+              <button id="read" class="btn btn-outline-warning btn-block" type="button"><img src="../../resources/read.png"></img>Read</button>
+              <button id="write" class="btn btn-outline-warning btn-block" type="button"><img src="../../resources/write.png"></img>Write</button>
+              <button id="readAll" class="btn btn-outline-warning btn-block" type="button"><img src="../../resources/read all.png"></img>Read All</button>
+              <button id="saveConfig" class="btn btn-outline-secondary btn-block" type="button"><img src="../../resources/save.png"></img>Save Config</button>
+              <button id="loadConfig" class="btn btn-outline-secondary btn-block" type="button"><img src="../../resources/load.png"></img>Load Config</button>
+              <input id="openCSV" type="file" style="display: none;" accept=".csv" /> 
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // first data sample time stamp
+    var chart_is_paused = false;
+    var chart2_is_paused = false;
+    var startd_date = Date.now();
+    // chartjs configuration
+    var chart_config = {
+      type: 'line', // line type chart (https://www.chartjs.org/docs/latest/charts/line.html)
+      data: { // data stores series for X and Y axis
+        labels: [], // here will go X axis values (at the begginig it is empty)
+        datasets: [{ // datasets allows further customization of each series (https://www.chartjs.org/docs/latest/charts/line.html#dataset-properties)
+          label: 'AccelX[]',
+          backgroundColor: "#ff6384",
+          borderColor: "#ff6384",
+          fill: false,
+          data: [] // this will be the y1 from our example in the {x: t, y: y1@t} where t is the time when data was aquired and y1@t y1 value at time t
+        }, {
+          label: 'AccelY[]',
+          backgroundColor: "#36a2eb",
+          borderColor: "#36a2eb",
+          fill: false,
+          data: [] // this will be the y2 from our example in the {x: t, y: y2@t} where t is the time when data was aquired and y2@t y2 value at time t
+        }, {
+          label: 'AccelZ[]',
+          backgroundColor: "#cc65fe",
+          borderColor: "#cc65fe",
+          fill: false,
+          data: [] // this will be the y3 from our example in the {x: t, y: y3@t} where t is the time when data was aquired and y3@t y3 value at time t
+        }]
+      },
+      options: { // options contains chart wise configuration
+        onClick: function () { // I attach a callback function to the chart click event to stop the chart for inspection when user click on it (https://www.chartjs.org/docs/latest/general/interactions/events.html?h=mouse)
+          chart_is_paused = !chart_is_paused; // a simple flag that poses chart updates
+        },
+        responsive: true, // https://www.chartjs.org/docs/latest/general/responsive.html#configuration-options
+        maintainAspectRatio: false, // see link above
+        legend: { // https://www.chartjs.org/docs/latest/configuration/legend.html?h=legend
+          position: "right",
+        },
+        scales: { // scales contains axis configurations
+          xAxes: [{
+            type: 'time', // in the end I went with time and you'll see in bellow how I handle the display values (https://www.chartjs.org/docs/latest/axes/cartesian/time.html)
+            time: { // this are time specific options
+              unit: "millisecond", // milliseconds is the unit you push in the chart data
+              displayFormats: {
+                millisecond: "x", // the output format ("x" stands for the raw format - as our millisends will represent the delta we don't want to convert it into a time stamp)
+              }
+            },
+            scaleLabel: {
+              display: true,
+              labelString: 'Time (s)'
+            },
+            ticks: { // this property defines how time is displaued on the X axis
+              source: "labels", // take the label as nput for the X axis
+              callback: function (date) {
+                return date / 1000; // convert milliseconds to seconds
+              }
+            },
+          }],
+          yAxes: [{
+            scaleLabel: {
+              display: true,
+              labelString: 'Acceleration (g)'
+            }
+          }]
+        },
+        title: {
+          display: true,
+          text: 'Accelerometer Data'
+        },
+        tooltips: { // tooltip displayed when mose moves over a data point (https://www.chartjs.org/docs/latest/configuration/tooltip.html)
+          callbacks: { // we will do the same as for X axis ticks (prevent delat converstion into TimeStamp value)
+            title: function (tooltip, data) {
+              return data.datasets[tooltip[0].datasetIndex].data[tooltip[0].index].x / 1000; // dataset Y value converted to seconds
+            }
+          }
+        }
+      }
+    };
+	
+    var chart2_config = {
+      type: 'line', // line type chart (https://www.chartjs.org/docs/latest/charts/line.html)
+      data: { // data stores series for X and Y axis
+        labels: [], // here will go X axis values (at the begginig it is empty)
+        datasets: [{ // datasets allows further customization of each series (https://www.chartjs.org/docs/latest/charts/line.html#dataset-properties)
+          label: 'SDCD[]',
+          backgroundColor: "#008000",
+          borderColor: "#008000",
+          fill: false,
+          data: [] // this will be the y1 from our example in the {x: t, y: y1@t} where t is the time when data was aquired and y1@t y1 value at time t
+        }]
+      },
+      options: { // options contains chart wise configuration
+        onClick: function () { // I attach a callback function to the chart click event to stop the chart for inspection when user click on it (https://www.chartjs.org/docs/latest/general/interactions/events.html?h=mouse)
+          chart2_is_paused = !chart2_is_paused; // a simple flag that poses chart updates
+        },
+        responsive: true, // https://www.chartjs.org/docs/latest/general/responsive.html#configuration-options
+        maintainAspectRatio: false, // see link above
+        legend: { // https://www.chartjs.org/docs/latest/configuration/legend.html?h=legend
+          position: "right",
+        },
+        scales: { // scales contains axis configurations
+          xAxes: [{
+            type: 'time', // in the end I went with time and you'll see in bellow how I handle the display values (https://www.chartjs.org/docs/latest/axes/cartesian/time.html)
+            time: { // this are time specific options
+              unit: "millisecond", // milliseconds is the unit you push in the chart data
+              displayFormats: {
+                millisecond: "x", // the output format ("x" stands for the raw format - as our millisends will represent the delta we don't want to convert it into a time stamp)
+              }
+            },
+            scaleLabel: {
+              display: true,
+              labelString: 'Time (s)'
+            },
+            ticks: { // this property defines how time is displaued on the X axis
+              source: "labels", // take the label as nput for the X axis
+              callback: function (date) {
+                return date / 1000; // convert milliseconds to seconds
+              }
+            },
+          }],
+          yAxes: [{
+            scaleLabel: {
+              display: true,
+              labelString: 'SDCD-OT  Event'
+            }
+          }]
+        },
+        title: {
+          display: true,
+          text: 'Sensor Data Change Detection - Outside of Threshold Event'
+        },
+        tooltips: { // tooltip displayed when mose moves over a data point (https://www.chartjs.org/docs/latest/configuration/tooltip.html)
+          callbacks: { // we will do the same as for X axis ticks (prevent delat converstion into TimeStamp value)
+            title: function (tooltip, data) {
+              return data.datasets[tooltip[0].datasetIndex].data[tooltip[0].index].x / 1000; // dataset Y value converted to seconds
+            }
+          }
+        }
+      }
+    };
+
+    var pcm;
+
+    function start_page() {
+      pcm = new PCM("localhost:41000", init);
+      load_fs_select();
+      load_odr_select();
+      load_mods_select();
+
+      $('#thermometer').thermometer( {
+        startValue: 0,
+        height: "80%",
+        width: "80%",
+        bottomText: "-40",
+        topText: "85",
+        animationSpeed: 100,
+        maxValue: 85,
+        minValue: -40,
+        liquidColour: "red",
+        valueChanged: function(value) {
+          $('#text_area_thermometer').val(value.toFixed(2));
+        }
+      });
+
+      $('.nav-link').on('click', function (e) {
+        e.preventDefault();
+        if (this.hash == "#demo-tab") {
+          // restart the loop is demo tab was activated
+          clearInterval(timer);
+          timer = setInterval(main_tab_loop, 100);
+          console.log('new interval created');
+        } else {
+          // overwise stop the loop to save bandwidth
+          clearInterval(timer);
+          timer = setInterval(register_tab_loop, 100);
+          console.log('interval cleared');
+        }
+        $(this).tab('show');
+      });
+      register_tab_event_handlers();
+    }
+
+    var timer;
+    var offx;
+    var offy;
+    var offz;
+    var rmsx;
+    var rmsy;
+    var rmsz;
+    var accel_flag;
+
+    var x_stoc;
+    var y_stoc;
+    var z_stoc;
+    var x_stof;
+    var y_stof;
+    var z_stof;
+    var selftest_flag;
+
+    var toggle = 0;
+    var trigger_accel_offnoise = 1;
+    var trigger_selftest = 1;
+    var reading = false;
+    var freefall_prev = 0; // prev free fall counter
+    var freefall = 0; // new free fall counter
+    var tap_prev = 0; // prev tap counter
+    var tap = 0; // new tap counter
+    var orient_prev = 0; // prev orient change counter
+    var orient = 0; // new orient change counter
+    var vecm_prev = 0; // prev vecm change counter
+    var vecm = 0; // new vecm change counter
+
+    var temp;
+
+    function init() {
+      timer = setInterval(main_tab_loop, 100);
+
+      /*  $("#act_btn").click(() => {
+            pcm.WriteVariable("toggle", 1 - toggle);
+        }); */
+      $("#calculate_button").click(() => {
+        pcm.WriteVariable("trigger_accel_offnoise", 1);
+      });
+      $("#selftest_button").click(() => {
+        pcm.WriteVariable("trigger_selftest", 1);
+      });
+      $("#fs_select").change(() => {
+        fsSelectionChanged($("#fs_select").val());
+      });
+      $("#odr_select").change(() => {
+        odrSelectionChanged($("#odr_select").val());
+      });
+      $("#mods_select").change(() => {
+        modsSelectionChanged($("#mods_select").val());
+      });
+
+      // chart initialization
+      var ctx = document.getElementById('canvas').getContext('2d');
+      ctx.height = 200;
+      chart = new Chart(ctx, chart_config);
+
+      var ctx2 = document.getElementById('canvas2').getContext('2d');
+      ctx2.height = 100;
+	  chart2 = new Chart(ctx2, chart2_config);
+
+      // load register data on startup
+      load_local_csv();
+    }
+
+    function main_tab_loop() {
+
+      if (reading) {
+        return;
+      }
+
+      reading = true;
+
+      Promise.all([
+        pcm.ReadVariable("trigger_accel_offnoise")
+        .then(response => {
+          trigger_accel_offnoise = response.data;
+          if (trigger_accel_offnoise) {
+            $("#calculate_button")
+              .removeClass("btn-success")
+              .addClass("btn-warning")
+              .text("Calculation in progress");
+          } else {
+            $("#calculate_button")
+              .removeClass("btn-warning")
+              .addClass("btn-success")
+              .text("Calculate Offset and Noise");
+            $("#text_area_11").val(offx);
+            $("#text_area_12").val(offy);
+            $("#text_area_13").val(offz);
+            $("#text_area_21").val(rmsx);
+            $("#text_area_22").val(rmsy);
+            $("#text_area_23").val(rmsz);
+          }
+        }),
+		
+
+        pcm.ReadVariable("trigger_selftest")
+        .then(response => {
+          trigger_selftest = response.data;
+          if (trigger_selftest) {
+            $("#selftest_button")
+              .removeClass("btn-success")
+              .addClass("btn-warning")
+              .text("Self-Test in progress");
+          } else {
+            $("#selftest_button")
+              .removeClass("btn-warning")
+              .addClass("btn-success")
+              .text("Perform Self-Test");
+            $("#text_area_14").val(x_stoc);
+            $("#text_area_15").val(y_stoc);
+            $("#text_area_16").val(z_stoc);
+            $("#text_area_24").val(x_stof);
+            $("#text_area_25").val(y_stof);
+            $("#text_area_26").val(z_stof);
+            $("#text_area_27").val(z_stof);
+          }
+        }),
+		
+        //pcm.ReadVariable("Temp")
+        //.then(response => {
+        //  temp = response.data;
+        //  $("#text_area_27").val(temp);
+        //}),
+        /*.catch(err => {
+            trigger_accel_offnoise = 0;
+        }),*/
+
+        pcm.ReadVariable("complete_accel_offnoise")
+        .then(response => {
+          accel_flag = response.data;
+        }),
+        pcm.ReadVariable("accel_offx")
+        .then(response => {
+          offx = response.xtra.formatted;
+        }),
+        pcm.ReadVariable("accel_offy")
+        .then(response => {
+          offy = response.xtra.formatted;
+        }),
+        pcm.ReadVariable("accel_offz")
+        .then(response => {
+          offz = response.xtra.formatted;
+        }),
+
+        pcm.ReadVariable("accel_rmsx")
+        .then(response => {
+          rmsx = response.xtra.formatted;
+        }),
+        pcm.ReadVariable("accel_rmsy")
+        .then(response => {
+          rmsy = response.xtra.formatted;
+        }),
+        pcm.ReadVariable("accel_rmsz")
+        .then(response => {
+          rmsz = response.xtra.formatted;
+        }),
+
+        pcm.ReadVariable("complete_selftest")
+        .then(response => {
+          selftest_flag = response.data;
+        }),
+        pcm.ReadVariable("x_stoc")
+        .then(response => {
+          x_stoc = response.xtra.formatted;
+        }),
+        pcm.ReadVariable("y_stoc")
+        .then(response => {
+          y_stoc = response.xtra.formatted;
+        }),
+        pcm.ReadVariable("z_stoc")
+        .then(response => {
+          z_stoc = response.xtra.formatted;
+        }),
+
+        pcm.ReadVariable("x_stof")
+        .then(response => {
+          x_stof = response.xtra.formatted;
+        }),
+        pcm.ReadVariable("y_stof")
+        .then(response => {
+          y_stof = response.xtra.formatted;
+        }),
+        pcm.ReadVariable("z_stof")
+        .then(response => {
+          z_stof = response.xtra.formatted;
+        }),
+        pcm.ReadVariable("Temp")
+        .then(response => {
+          temp = response.xtra.formatted;
+          $("#text_area_27").val(temp);
+        }),
+
+        //Update FS drop-down menu selection
+        pcm.ReadVariable("fs_value")
+        .then(response => {
+          fs = response.data;
+          if (1 == (fs&7)) { // +-2G
+            $("#fs_select").val(0);
+          }
+          else if (3 == (fs&7)) { // +-4G
+            $("#fs_select").val(1);
+          }
+          else if (5 == (fs&7)) { // +-8G
+            $("#fs_select").val(2);
+          }
+          else if (7 == (fs&7)) { // +-16G
+            $("#fs_select").val(3);
+          }
+        }),
+
+        //Update MODS drop-down menu selection
+        pcm.ReadVariable("mods_value")
+        .then(response => {
+          mods = response.data;
+          if (2 == (mods)) { // Low Power mode
+            $("#mods_select").val(0);
+          }
+          else if (66 == (mods)) { // High Resolution mode
+            $("#mods_select").val(1);
+          }
+          else if (130 == (mods)) { // Flexible Performance mode
+            $("#mods_select").val(2);
+          }
+        }),
+
+        //Update ODR drop-down menu selection
+        pcm.ReadVariable("odr_value")
+        .then(response => {
+          odr = response.data;
+          if (192 == (odr)) { // 0.781 Hz
+            $("#odr_select").val(0);
+          }
+          else if (176 == (odr)) { // 1.56 Hz
+            $("#odr_select").val(1);
+          }
+          else if (160 == (odr)) { // 3.125 Hz
+            $("#odr_select").val(2);
+          }
+          else if (144 == (odr)) { // 6.25 Hz
+            $("#odr_select").val(3);
+          }
+          else if (128 == (odr)) { // 12.5 Hz
+            $("#odr_select").val(4);
+          }
+          else if (112 == (odr)) { // 25 Hz
+            $("#odr_select").val(5);
+          }
+          else if (96 == (odr)) { // 50 Hz
+            $("#odr_select").val(6);
+          }
+          else if (80 == (odr)) { // 100 Hz
+            $("#odr_select").val(7);
+          }
+          else if (64 == (odr)) { // 200 Hz
+            $("#odr_select").val(8);
+          }
+          else if (48 == (odr)) { // 400 Hz
+            $("#odr_select").val(9);
+          }
+          else if (32 == (odr)) { // 800 Hz
+            $("#odr_select").val(10);
+          }
+          else if (16 == (odr)) { // 1600 Hz
+            $("#odr_select").val(11);
+          }
+          else if (0 == (odr)) { // 3200 Hz
+            $("#odr_select").val(12);
+          }
+        }),
+
+        //Update ODR drop-down menu selection
+        pcm.ReadVariable("Temp")
+        .then(response => {
+          temp = response.data;
+		  $('#thermometer').thermometer( 'setValue', temp );
+	    }),
+
+      ]).finally(() => {
+        reading = false;
+      });
+
+      if (chart_is_paused) {
+        return;
+      }
+      var current_date = Date.now() - startd_date;
+      Promise.all([ // use Promise all to wait for all variables to be read
+        pcm.ReadVariable("AccelX"), // replace with pcm.ReadVariable("y1")
+        pcm.ReadVariable("AccelY"), // replace with pcm.ReadVariable("y2")
+        pcm.ReadVariable("AccelZ") // replace with pcm.ReadVariable("y3")
+      ]).then((ys) => { // once all the values are read we can update the chart
+        // ys is an array of values returned by each read in the order they are passed to Promise.all
+        // note that pcm.ReadVariable returns an object with the value stored in the data property
+        chart.data.labels.push(Math.floor(current_date / 100) * 100); // round the x axis values
+        chart.data.datasets[0].data.push({
+          x: current_date,
+          y: ys[0].data
+        }); // but still keep the exact values for data points
+        chart.data.datasets[1].data.push({
+          x: current_date,
+          y: ys[1].data
+        }); // iin the previous example we used just one value that when to Y axis
+        chart.data.datasets[2].data.push({
+          x: current_date,
+          y: ys[2].data
+        }); // now we fill in an object with x and y properties for corresponding axises
+        if (chart.data.labels.length > 50) { // prune the displayed values once they exeed a treshold
+          chart.data.labels.shift();
+          chart.data.datasets[0].data.shift();
+          chart.data.datasets[1].data.shift();
+          chart.data.datasets[2].data.shift();
+        }
+        chart.update(0); // pass 0 argument to disable the animation
+      });
+
+      if (chart2_is_paused) {
+        return;
+      }
+      Promise.all([ // use Promise all to wait for all variables to be read
+        pcm.ReadVariable("SDCD") // replace with pcm.ReadVariable("y2")
+      ]).then((y2) => { // once all the values are read we can update the chart
+        // y2 is an array of values returned by each read in the order they are passed to Promise.all
+        // note that pcm.ReadVariable returns an object with the value stored in the data property
+        chart2.data.labels.push(Math.floor(current_date / 100) * 100); // round the x axis values
+        chart2.data.datasets[0].data.push({
+          x: current_date,
+          y: y2[0].data
+        }); // but still keep the exact values for data points
+        if (chart2.data.labels.length > 50) { // prune the displayed values once they exeed a treshold
+          chart2.data.labels.shift();
+          chart2.data.datasets[0].data.shift();
+        }
+        chart2.update(0); // pass 0 argument to disable the animation
+      });
+    }
+
+    /* Full Scale Range drop-down menu options */
+    /* Enable write trigger and write appropriate value to FXLS8962_SENS_CONFIG1 Register offset */
+
+    var fs_options = [{
+        "name": "±2G",
+        "offset": 21, // FXLS8962_SENS_CONFIG1 Register offset
+        "value": 1, // Value to write
+        "trigger": 1 // Enabling trigger flag on option selection
+      },
+      {
+        "name": "±4G",
+        "offset": 21, // FXLS8962_SENS_CONFIG1 Register offset
+        "value": 3, // Value to write
+        "trigger": 1 // Enabling trigger flag on option selection
+      },
+      {
+        "name": "±8G",
+        "offset": 21, // FXLS8962_SENS_CONFIG1 Register offset
+        "value": 5, // Value to write
+        "trigger": 1 // Enabling trigger flag on option selection
+      },
+      {
+        "name": "±16G",
+        "offset": 21, // FXLS8962_SENS_CONFIG1 Register offset
+        "value": 7, // Value to write
+        "trigger": 1 // Enabling trigger flag on option selection
+      }
+    ]
+
+    /* Output Data Rate (ODR) Range drop-down menu options */
+    /* Enable write trigger and write appropriate value to FXLS8962_SENS_CONFIG1 Register offset */
+    var odr_options = [
+	  {
+        "name": "0.781 Hz",
+        "offset": 23, // FXLS8962_SENS_CONFIG1 Register offset
+        "value": 192, // Value to write
+        "trigger": 1 // Enabling trigger flag on option selection
+      },
+	  {
+        "name": "1.56 Hz",
+        "offset": 23, // FXLS8962_SENS_CONFIG1 Register offset
+        "value": 176, // Value to write
+        "trigger": 1 // Enabling trigger flag on option selection
+      },
+	  {
+        "name": "3.125 Hz",
+        "offset": 23, // FXLS8962_SENS_CONFIG1 Register offset
+        "value": 160, // Value to write
+        "trigger": 1 // Enabling trigger flag on option selection
+      },
+      {
+        "name": "6.25 Hz",
+        "offset": 23, // FXLS8962_SENS_CONFIG1 Register offset
+        "value": 144, // Value to write
+        "trigger": 1 // Enabling trigger flag on option selection
+      },
+      {
+        "name": "12.5 Hz",
+        "offset": 23, // FXLS8962_SENS_CONFIG1 Register offset
+        "value": 128, // Value to write
+        "trigger": 1 // Enabling trigger flag on option selection
+      },
+      {
+        "name": "25 Hz",
+        "offset": 23, // FXLS8962_SENS_CONFIG1 Register offset
+        "value": 112, // Value to write
+        "trigger": 1 // Enabling trigger flag on option selection
+      },
+      {
+        "name": "50 Hz",
+        "offset": 23, // FXLS8962_SENS_CONFIG1 Register offset
+        "value": 96, // Value to write
+        "trigger": 1 // Enabling trigger flag on option selection
+      },
+      {
+        "name": "100 Hz",
+        "offset": 23, // FXLS8962_SENS_CONFIG1 Register offset
+        "value": 80, // Value to write
+        "trigger": 1 // Enabling trigger flag on option selection
+      },
+      {
+        "name": "200 Hz",
+        "offset": 23, // FXLS8962_SENS_CONFIG1 Register offset
+        "value": 64, // Value to write
+        "trigger": 1 // Enabling trigger flag on option selection
+      },
+      {
+        "name": "400 Hz",
+        "offset": 23, // FXLS8962_SENS_CONFIG1 Register offset
+        "value": 48, // Value to write
+        "trigger": 1 // Enabling trigger flag on option selection
+      },
+      {
+        "name": "800 Hz",
+        "offset": 23, // FXLS8962_SENS_CONFIG1 Register offset
+        "value": 32, // Value to write
+        "trigger": 1 // Enabling trigger flag on option selection
+      },
+      {
+        "name": "1600 Hz",
+        "offset": 23, // FXLS8962_SENS_CONFIG1 Register offset
+        "value": 16, // Value to write
+        "trigger": 1 // Enabling trigger flag on option selection
+      },
+      {
+        "name": "3200 Hz",
+        "offset": 23, // FXLS8962_SENS_CONFIG1 Register offset
+        "value": 0, // Value to write
+        "trigger": 1 // Enabling trigger flag on option selection
+      }
+    ]
+
+    /* Accel wake mode OSR Range drop-down menu options */
+    /* Enable write trigger and write appropriate value to FXLS8962_SENS_CONFIG2 Register offset */
+    var mods_options = [{
+        "name": "Low Power",
+        "offset": 22, // FXLS8962_SENS_CONFIG2 Register offset
+        "value": 2, // Value to write
+        "trigger": 1 // Enabling trigger flag on option selection
+      },
+      {
+        "name": "High Performance",
+        "offset": 22, // FXLS8962_SENS_CONFIG2 Register offset
+        "value": 66, // Value to write
+        "trigger": 1 // Enabling trigger flag on option selection
+      },
+      {
+        "name": "Flexible Performance",
+        "offset": 22, // FXLS8962_SENS_CONFIG2 Register offset
+        "value": 130, // Value to write
+        "trigger": 1 // Enabling trigger flag on option selection
+      }
+    ]
+
+    function load_fs_select() {
+      var selectList = $("#fs_select");
+      for (var i = 0; i < fs_options.length; i++) {
+        var option = $("<option>").val(i).text(fs_options[i].name);
+        selectList.append(option);
+      }
+      $("#fs_select").val(1);
+
+
+      // Select default option
+      // V1 - after loop select option
+      //$("#fs_select").val(0);
+      // V2 - add is inside a loop and create selected option);
+      // if (i == 0) $("<option>").attr("selected", true).val(i).text(fs_options[i].name);
+    }
+
+    function fsSelectionChanged(option) {
+      if (fs_options[option] !== undefined) {
+        Promise.all([
+          pcm.WriteVariable("Offset", fs_options[option].offset),
+          pcm.WriteVariable("Value", fs_options[option].value),
+          pcm.WriteVariable("Trigger", fs_options[option].trigger)
+        ]).catch(err => $("#fs_select").val(-1));
+      }
+    }
+
+    function load_odr_select() {
+      var selectList = $("#odr_select");
+      for (var i = 0; i < odr_options.length; i++) {
+        var option = $("<option>").val(i).text(odr_options[i].name);
+        selectList.append(option);
+      }
+      $("#odr_select").val(4);
+
+      // Select default option
+      // V1 - after loop select option
+      // $("#odr_select").val(2);
+      // V2 - add is inside a loop and create selected option);
+      // if (i == 0) $("<option>").attr("selected", true).val(i).text(odr_options[i].name);
+    }
+
+    function odrSelectionChanged(option) {
+      if (odr_options[option] !== undefined) {
+        Promise.all([
+          pcm.WriteVariable("Offset", odr_options[option].offset),
+          pcm.WriteVariable("Value", odr_options[option].value),
+          pcm.WriteVariable("Trigger", odr_options[option].trigger)
+        ]).catch(err => $("#odr_select").val(-1));
+      }
+    }
+
+    function load_mods_select() {
+      var selectList = $("#mods_select");
+      for (var i = 0; i < mods_options.length; i++) {
+        var option = $("<option>").val(i).text(mods_options[i].name);
+        selectList.append(option);
+      }
+      $("#mods_select").val(0);
+
+      // Select default option
+      // V1 - after loop select option
+      // $("#mods_select").val(2);
+      // V2 - add is inside a loop and create selected option);
+      // if (i == 0) $("<option>").attr("selected", true).val(i).text(mods_options[i].name);
+    }
+
+    function modsSelectionChanged(option) {
+      if (mods_options[option] !== undefined) {
+        Promise.all([
+          pcm.WriteVariable("Offset", mods_options[option].offset),
+          pcm.WriteVariable("Value", mods_options[option].value),
+          pcm.WriteVariable("Trigger", mods_options[option].trigger)
+        ]).catch(err => $("#mods_select").val(-1));
+      }
+    }
+
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,17 @@
+﻿NXP Software Content Register
+
+Name: dm-freemaster-fxls89xxxf-evaluation-gui
+Version: 1.0
+Outgoing License: BSD-3-Clause
+License File: LICENSE.txt
+Description: This example demonstrates FXLS89xxxF 3-axis accelerometer evaluation GUI using ISSDK and FreeMASTER for FRDM-MCXN947.
+Release location: https://github.com/nxp-appcodehub/dm-freemaster-fxls89xxxf-evaluation-gui
+Origin: NXP (BSD-3-Clause)
+        CMSIS (Apache-2.0) - https://github.com/ARM-software/CMSIS_5/releases/tag/5.8.0
+		bootstrap (MIT License) - https://github.com/twbs/bootstrap/blob/main/LICENSE
+		Chart.js (MIT License) - https://github.com/chartjs/Chart.js/blob/master/LICENSE.md
+		D3.js (BSD-3-Clause) - https://github.com/d3/d3/blob/master/LICENSE
+		FileSaver (MIT License) - https://github.com/eligrey/FileSaver.js/blob/master/LICENSE.md
+		gauge.min (MIT License) - https://github.com/getgauge/gauge-js/blob/master/LICENSE
+		jquery (MIT License) - https://github.com/jquery/jquery/blob/main/LICENSE.txt
+		popper (MIT License) - https://github.com/popperjs/popper-core/blob/master/LICENSE.md
