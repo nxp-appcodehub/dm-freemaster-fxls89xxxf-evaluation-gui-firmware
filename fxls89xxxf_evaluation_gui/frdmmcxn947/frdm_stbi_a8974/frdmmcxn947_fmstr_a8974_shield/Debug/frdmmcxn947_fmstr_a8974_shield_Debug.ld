@@ -5,7 +5,7 @@
  * Generated linker script file for MCXN947
  * Created from linkscript.ldt by FMCreateLinkLibraries
  * Using Freemarker v2.3.30
- * MCUXpresso IDE v11.9.0_prc1 [Build 2089] [2023-11-02] on Mar 17, 2024, 7:15:34 PM
+ * MCUXpresso IDE v11.9.0_prc1 [Build 2089] [2023-11-02] on Apr 1, 2024, 5:35:11 PM
  */
 
 INCLUDE "frdmmcxn947_fmstr_a8974_shield_Debug_library.ld"
