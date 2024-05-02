@@ -5,7 +5,7 @@
  * Generated linker script file for MCXN947
  * Created from linkscript.ldt by FMCreateLinkLibraries
  * Using Freemarker v2.3.30
- * MCUXpresso IDE v11.9.0_prc1 [Build 2089] [2023-11-02] on Apr 1, 2024, 5:27:09 PM
+ * MCUXpresso IDE v11.9.1 [Build 2170] [2024-04-19] on May 1, 2024, 9:32:25 PM
  */
 
 INCLUDE "frdmmcxn947_fmstr_a8974_click_Release_library.ld"
@@ -95,7 +95,6 @@ SECTIONS
     /* USB_RAM */
     .m_usb_data (NOLOAD) :
     {
-        *(m_usb_bdt)
         *(m_usb_global)
     } > USB_RAM AT> USB_RAM
     /* DATA section for SRAMX */

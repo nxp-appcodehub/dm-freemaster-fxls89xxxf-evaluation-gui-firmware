@@ -160,13 +160,21 @@ int32_t FXLS8974_SPI_Configure(fxls8974_spi_sensorhandle_t *pSensorHandle, const
         return SENSOR_ERROR_WRITE;
     }
 
-    /*! Put the device into active mode and ready for reading data.*/
-    status = Register_SPI_Write(pSensorHandle->pCommDrv, &pSensorHandle->deviceInfo, &pSensorHandle->slaveParams,
-                                FXLS8974_SENS_CONFIG1, FXLS8974_SENS_CONFIG1_ACTIVE_ACTIVE,
-                                FXLS8974_SENS_CONFIG1_ACTIVE_MASK);
-    if (ARM_DRIVER_OK != status)
+    /* Check if user is setting SENS_CONFIG1 to put sensor to idle mode */
+    if ((pRegWriteList->writeTo == FXLS8974_SENS_CONFIG1) && ((pRegWriteList->value & 0x01) == 0))
     {
-        return SENSOR_ERROR_WRITE;
+    	//skip putting device to active mode
+    }
+    else
+    {
+		/*! Put the device into active mode and ready for reading data.*/
+		status = Register_SPI_Write(pSensorHandle->pCommDrv, &pSensorHandle->deviceInfo, &pSensorHandle->slaveParams,
+									FXLS8974_SENS_CONFIG1, FXLS8974_SENS_CONFIG1_ACTIVE_ACTIVE,
+									FXLS8974_SENS_CONFIG1_ACTIVE_MASK);
+		if (ARM_DRIVER_OK != status)
+		{
+			return SENSOR_ERROR_WRITE;
+		}
     }
 
     return SENSOR_ERROR_NONE;
@@ -315,14 +323,22 @@ int32_t FXLS8974_I2C_Configure(fxls8974_i2c_sensorhandle_t *pSensorHandle, const
         return SENSOR_ERROR_WRITE;
     }
 
-    /*! Put the device into active mode and ready for reading data.*/
-    status = Register_I2C_Write(pSensorHandle->pCommDrv, &pSensorHandle->deviceInfo, pSensorHandle->slaveAddress,
-                                FXLS8974_SENS_CONFIG1, FXLS8974_SENS_CONFIG1_ACTIVE_ACTIVE,
-                                FXLS8974_SENS_CONFIG1_ACTIVE_MASK, false);
-    if (ARM_DRIVER_OK != status)
+    /* Check if user is setting SENS_CONFIG1 to put sensor to idle mode */
+    if ((pRegWriteList->writeTo == FXLS8974_SENS_CONFIG1) && ((pRegWriteList->value & 0x01) == 0))
     {
-        return SENSOR_ERROR_WRITE;
+    	//skip putting device to active mode
     }
+    else
+    {
+	    /*! Put the device into active mode and ready for reading data.*/
+	    status = Register_I2C_Write(pSensorHandle->pCommDrv, &pSensorHandle->deviceInfo, pSensorHandle->slaveAddress,
+	                                FXLS8974_SENS_CONFIG1, FXLS8974_SENS_CONFIG1_ACTIVE_ACTIVE,
+	                                FXLS8974_SENS_CONFIG1_ACTIVE_MASK, false);
+	    if (ARM_DRIVER_OK != status)
+	    {
+	        return SENSOR_ERROR_WRITE;
+	    }
+	}
 
     return SENSOR_ERROR_NONE;
 }

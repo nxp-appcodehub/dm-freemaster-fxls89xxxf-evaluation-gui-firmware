@@ -91,6 +91,7 @@ const registerwritelist_t cFxls8974ConfigNormal[] = {
     {0x33,0xC0,0x00},
     {0x34,0xFF,0x00},
     {0x35,0x40,0x00},
+    {FXLS8974_SENS_CONFIG1, FXLS8974_SENS_CONFIG1_ACTIVE_ACTIVE, FXLS8974_SENS_CONFIG1_ACTIVE_MASK},
     __END_WRITE_DATA__};
 
 /*! @brief Register settings for Self-Test in X Axis (Positive polarity). */
@@ -1065,7 +1066,7 @@ int32_t perform_selftest(fxls8974_i2c_sensorhandle_t fxls8974Driver, fxls8974_se
 
 		}
 
-		BOARD_DELAY_ms(1000);
+		//BOARD_DELAY_ms(1000);
 		axis++;
 	}
 

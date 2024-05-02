@@ -29,13 +29,13 @@
 
 ## 1. Software<a name="step1"></a>
 - [IoT Sensing SDK (ISSDK) v1.8](https://nxp.com/iot-sensing-sdk) offered as middleware in MCUXpresso SDK for supported platforms
-- [MCUXpresso SDK v2.13.1 for MCX-N9XX-EVK](https://mcuxpresso.nxp.com/en/select)
+- [MCXUpresso SDK 2.14.0 for FRDM-MCXN947](https://mcuxpresso.nxp.com/en/builder?hw=FRDM-MCXN947)
 - [MCUXpresso IDE v11.9.0](https://www.nxp.com/design/design-center/software/development-software/mcuxpresso-software-and-tools-/mcuxpresso-integrated-development-environment-ide:MCUXpresso-IDE)
 - FreeMASTER v3.2.2
 - Git v2.39.0
 
 ## 2. Hardware<a name="step2"></a>
-- FRDM-MCXN947MCU board
+- [FRDM-MCXN947 MCU board](https://www.nxp.com/part/FRDM-MCXN947)
 - [FRDM-STBI-A8974 sensor board](https://mcuxpresso.nxp.com/eb-hub/product/frdm-stbi-a8974) Or
 - [Accel4 sensor click](https://www.mikroe.com/accel-4-click)
 - Personal Computer
@@ -45,20 +45,19 @@
 
 
 ### 3.1 Step 1: Download and Install required Software(s)
-- Install MCUXpresso IDE 2.19.0
-- Download and Install [MCXUpresso SDK 2.13.1 for MCX-N9XX-EVK](https://mcuxpresso.nxp.com/en/builder?hw=MCX-N9XX-EVK-A8974&rel=708). Make sure to select ISSDK and FreeMASTER middleware while building SDK.
+- Download [MCUXpresso IDE 2.19.0 or newer](https://www.nxp.com/design/design-center/software/development-software/mcuxpresso-software-and-tools-/mcuxpresso-integrated-development-environment-ide:MCUXpresso-IDE?&tid=vanMCUXPRESSO/IDE) and Install following the installer instructions.
+- Download [MCXUpresso SDK 2.14.0 for FRDM-MCXN947](https://mcuxpresso.nxp.com/en/builder?hw=FRDM-MCXN947). Make sure to select ISSDK and FreeMASTER middleware while building SDK.
 - Install Git v2.39.0 (for cloning and running west commands)
-- [Download FreeMASTER v3.2.2](https://www.nxp.com/webapp/sps/download/license.jsp?colCode=FMASTERSW32&appType=file1&DOWNLOAD_ID=null).
-- Install FreeMASTER v3.2.2 following the installer instructions.
+- Download [FreeMASTER v3.2.2 or newer](https://www.nxp.com/webapp/sps/download/license.jsp?colCode=FMASTERSW32&appType=file1&DOWNLOAD_ID=null) and install following the installer instructions.
 
 ### 3.2 Step 2: Clone the APP-CODE-HUB/dm-freemaster_fxls89xxxf_evaluation_gui
 - Clone this repository to get the example projects:
 - Change directory to cloned project folder:<br>
-    cd *dm-freemaster_fxls89xxxf_evaluation_gui*
+    cd *dm-freemaster_fxls89xxxf_evaluation_gui_firmware*
 
 ### 3.3 Step 3: Build example projects
 - Open MCUXpresso IDE and select a directory to create your workspace.
-- Install MCXUpresso SDK 2.13.1 for MCX-N9XX-EVK (drag and drop SDK zip into "Installed SDK" view) into MCUXpresso IDE.
+- Install "MCXUpresso SDK 2.14.0 for FRDM-MCXN947" (drag and drop SDK zip into "Installed SDK" view) into MCUXpresso IDE.
 - Go to "Quickstart Panel" and click on "Import Project(s) from file system",
 - Select "Project directory (unpacked)" and browse to the cloned project folder.
 - Select example projects that you want to open and run.

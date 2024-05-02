@@ -8,7 +8,7 @@ Hardware requirements
 - Mini/micro C USB cable
 - FRDM-MCXN947 board
 - FRDM-STBI-A8974 board (https://mcuxpresso.nxp.com/eb-hub/product/frdm-stbi-a8974)
-- FreeMASTER 3.2.2.2
+- FreeMASTER 3.2.2 or newer
 
 Board settings
 ============

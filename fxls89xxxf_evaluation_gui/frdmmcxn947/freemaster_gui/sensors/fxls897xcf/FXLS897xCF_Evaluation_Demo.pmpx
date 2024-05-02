@@ -5,7 +5,7 @@
 	</main>
 	<objects>
 		<object name="ObjId0000" type="CPrjDoc">
-			<member name="version" type="string">3.2.2.2</member>
+			<member name="version" type="string">3.2.3.2</member>
 			<member name="enum_db_man" type="CEnumList">ObjId0522</member>
 			<member name="variables" type="CObListEx">ObjId0001</member>
 			<member name="stimulators" type="CObListEx">ObjId0020</member>
@@ -19,7 +19,7 @@
 			<member name="mapfile_pre_select" type="sint32">0</member>
 			<member name="comm_params_saved" type="sint32">0</member>
 			<member name="comm_state_saved" type="sint32">0</member>
-			<member name="comm_state_enabled" type="sint32">0</member>
+			<member name="comm_state_enabled" type="sint32">1</member>
 			<member name="cthread_boosting" type="sint32">0</member>
 			<member name="cthread_prio_base" type="sint32">3</member>
 			<member name="cthread_prio_boost" type="sint32">3</member>
@@ -84,7 +84,7 @@
 			<member name="unit" type="string">g</member>
 			<member name="period" type="sint32">0</member>
 			<member name="address" type="string">registers.accel[0]</member>
-			<member name="last_addr" type="uint32">0x20000114</member>
+			<member name="last_addr" type="uint32">0x2000015C</member>
 			<member name="byte_size" type="sint32">4</member>
 			<member name="description" type="string"/>
 			<member name="comment" type="string"/>
@@ -133,7 +133,7 @@
 			<member name="unit" type="string">g</member>
 			<member name="period" type="sint32">0</member>
 			<member name="address" type="string">registers.accel[2]</member>
-			<member name="last_addr" type="uint32">0x2000011C</member>
+			<member name="last_addr" type="uint32">0x20000164</member>
 			<member name="byte_size" type="sint32">4</member>
 			<member name="description" type="string"/>
 			<member name="comment" type="string"/>
@@ -182,7 +182,7 @@
 			<member name="unit" type="string">g</member>
 			<member name="period" type="sint32">0</member>
 			<member name="address" type="string">registers.accel[1]</member>
-			<member name="last_addr" type="uint32">0x20000118</member>
+			<member name="last_addr" type="uint32">0x20000160</member>
 			<member name="byte_size" type="sint32">4</member>
 			<member name="description" type="string"/>
 			<member name="comment" type="string"/>
@@ -231,7 +231,7 @@
 			<member name="unit" type="string">unit</member>
 			<member name="period" type="sint32">10000</member>
 			<member name="address" type="string">registers.reg_addr[13]</member>
-			<member name="last_addr" type="uint32">0x200000E4</member>
+			<member name="last_addr" type="uint32">0x2000012C</member>
 			<member name="byte_size" type="sint32">1</member>
 			<member name="description" type="string"/>
 			<member name="comment" type="string"/>
@@ -280,7 +280,7 @@
 			<member name="unit" type="string">unit</member>
 			<member name="period" type="sint32">0</member>
 			<member name="address" type="string">registers.trigger</member>
-			<member name="last_addr" type="uint32">0x20000092</member>
+			<member name="last_addr" type="uint32">0x200000DA</member>
 			<member name="byte_size" type="sint32">1</member>
 			<member name="description" type="string"/>
 			<member name="comment" type="string"/>
@@ -329,7 +329,7 @@
 			<member name="unit" type="string">unit</member>
 			<member name="period" type="sint32">0</member>
 			<member name="address" type="string">registers.offset</member>
-			<member name="last_addr" type="uint32">0x20000090</member>
+			<member name="last_addr" type="uint32">0x200000D8</member>
 			<member name="byte_size" type="sint32">1</member>
 			<member name="description" type="string"/>
 			<member name="comment" type="string"/>
@@ -378,7 +378,7 @@
 			<member name="unit" type="string">unit</member>
 			<member name="period" type="sint32">0</member>
 			<member name="address" type="string">registers.value</member>
-			<member name="last_addr" type="uint32">0x20000091</member>
+			<member name="last_addr" type="uint32">0x200000D9</member>
 			<member name="byte_size" type="sint32">1</member>
 			<member name="description" type="string"/>
 			<member name="comment" type="string"/>
@@ -427,7 +427,7 @@
 			<member name="unit" type="string">unit</member>
 			<member name="period" type="sint32">1000</member>
 			<member name="address" type="string">registers.toggle</member>
-			<member name="last_addr" type="uint32">0x200000D1</member>
+			<member name="last_addr" type="uint32">0x20000119</member>
 			<member name="byte_size" type="sint32">1</member>
 			<member name="description" type="string"/>
 			<member name="comment" type="string"/>
@@ -476,7 +476,7 @@
 			<member name="unit" type="string">unit</member>
 			<member name="period" type="sint32">100</member>
 			<member name="address" type="string">registers.trigger_accel_offnoise</member>
-			<member name="last_addr" type="uint32">0x200000D2</member>
+			<member name="last_addr" type="uint32">0x2000011A</member>
 			<member name="byte_size" type="sint32">1</member>
 			<member name="description" type="string"/>
 			<member name="comment" type="string"/>
@@ -525,7 +525,7 @@
 			<member name="unit" type="string">unit</member>
 			<member name="period" type="sint32">100</member>
 			<member name="address" type="string">offnoise_data.complete_accel_offnoise</member>
-			<member name="last_addr" type="uint32">0x2000014C</member>
+			<member name="last_addr" type="uint32">0x20000194</member>
 			<member name="byte_size" type="sint32">1</member>
 			<member name="description" type="string"/>
 			<member name="comment" type="string"/>
@@ -574,7 +574,7 @@
 			<member name="unit" type="string">g</member>
 			<member name="period" type="sint32">100</member>
 			<member name="address" type="string">offnoise_data.offx</member>
-			<member name="last_addr" type="uint32">0x20000134</member>
+			<member name="last_addr" type="uint32">0x2000017C</member>
 			<member name="byte_size" type="sint32">4</member>
 			<member name="description" type="string"/>
 			<member name="comment" type="string"/>
@@ -623,7 +623,7 @@
 			<member name="unit" type="string">g</member>
 			<member name="period" type="sint32">100</member>
 			<member name="address" type="string">offnoise_data.offy</member>
-			<member name="last_addr" type="uint32">0x20000138</member>
+			<member name="last_addr" type="uint32">0x20000180</member>
 			<member name="byte_size" type="sint32">4</member>
 			<member name="description" type="string"/>
 			<member name="comment" type="string"/>
@@ -672,7 +672,7 @@
 			<member name="unit" type="string">g</member>
 			<member name="period" type="sint32">100</member>
 			<member name="address" type="string">offnoise_data.offz</member>
-			<member name="last_addr" type="uint32">0x2000013C</member>
+			<member name="last_addr" type="uint32">0x20000184</member>
 			<member name="byte_size" type="sint32">4</member>
 			<member name="description" type="string"/>
 			<member name="comment" type="string"/>
@@ -721,7 +721,7 @@
 			<member name="unit" type="string">ug/rtHz</member>
 			<member name="period" type="sint32">100</member>
 			<member name="address" type="string">offnoise_data.rmsx</member>
-			<member name="last_addr" type="uint32">0x20000140</member>
+			<member name="last_addr" type="uint32">0x20000188</member>
 			<member name="byte_size" type="sint32">4</member>
 			<member name="description" type="string"/>
 			<member name="comment" type="string"/>
@@ -770,7 +770,7 @@
 			<member name="unit" type="string">ug/rtHz</member>
 			<member name="period" type="sint32">100</member>
 			<member name="address" type="string">offnoise_data.rmsy</member>
-			<member name="last_addr" type="uint32">0x20000144</member>
+			<member name="last_addr" type="uint32">0x2000018C</member>
 			<member name="byte_size" type="sint32">4</member>
 			<member name="description" type="string"/>
 			<member name="comment" type="string"/>
@@ -819,7 +819,7 @@
 			<member name="unit" type="string">ug/rtHz</member>
 			<member name="period" type="sint32">100</member>
 			<member name="address" type="string">offnoise_data.rmsz</member>
-			<member name="last_addr" type="uint32">0x20000148</member>
+			<member name="last_addr" type="uint32">0x20000190</member>
 			<member name="byte_size" type="sint32">4</member>
 			<member name="description" type="string"/>
 			<member name="comment" type="string"/>
@@ -868,7 +868,7 @@
 			<member name="unit" type="string">unit</member>
 			<member name="period" type="sint32">0</member>
 			<member name="address" type="string">registers.read_offset</member>
-			<member name="last_addr" type="uint32">0x20000093</member>
+			<member name="last_addr" type="uint32">0x200000DB</member>
 			<member name="byte_size" type="sint32">1</member>
 			<member name="description" type="string"/>
 			<member name="comment" type="string"/>
@@ -917,7 +917,7 @@
 			<member name="unit" type="string">unit</member>
 			<member name="period" type="sint32">0</member>
 			<member name="address" type="string">registers.read_trigger</member>
-			<member name="last_addr" type="uint32">0x20000095</member>
+			<member name="last_addr" type="uint32">0x200000DD</member>
 			<member name="byte_size" type="sint32">1</member>
 			<member name="description" type="string"/>
 			<member name="comment" type="string"/>
@@ -966,7 +966,7 @@
 			<member name="unit" type="string">unit</member>
 			<member name="period" type="sint32">0</member>
 			<member name="address" type="string">registers.read_value</member>
-			<member name="last_addr" type="uint32">0x20000094</member>
+			<member name="last_addr" type="uint32">0x200000DC</member>
 			<member name="byte_size" type="sint32">1</member>
 			<member name="description" type="string"/>
 			<member name="comment" type="string"/>
@@ -1015,7 +1015,7 @@
 			<member name="unit" type="string">unit</member>
 			<member name="period" type="sint32">0</member>
 			<member name="address" type="string">registers.readall_trigger</member>
-			<member name="last_addr" type="uint32">0x200000D0</member>
+			<member name="last_addr" type="uint32">0x20000118</member>
 			<member name="byte_size" type="sint32">1</member>
 			<member name="description" type="string"/>
 			<member name="comment" type="string"/>
@@ -1064,7 +1064,7 @@
 			<member name="unit" type="string">unit</member>
 			<member name="period" type="sint32">0</member>
 			<member name="address" type="string">registers.fs_value</member>
-			<member name="last_addr" type="uint32">0x200000D4</member>
+			<member name="last_addr" type="uint32">0x2000011C</member>
 			<member name="byte_size" type="sint32">1</member>
 			<member name="description" type="string"/>
 			<member name="comment" type="string"/>
@@ -1113,7 +1113,7 @@
 			<member name="unit" type="string">unit</member>
 			<member name="period" type="sint32">0</member>
 			<member name="address" type="string">registers.mods_value</member>
-			<member name="last_addr" type="uint32">0x200000D5</member>
+			<member name="last_addr" type="uint32">0x2000011D</member>
 			<member name="byte_size" type="sint32">1</member>
 			<member name="description" type="string"/>
 			<member name="comment" type="string"/>
@@ -1162,7 +1162,7 @@
 			<member name="unit" type="string">unit</member>
 			<member name="period" type="sint32">1000</member>
 			<member name="address" type="string">registers.readall_size</member>
-			<member name="last_addr" type="uint32">0x200000CF</member>
+			<member name="last_addr" type="uint32">0x20000117</member>
 			<member name="byte_size" type="sint32">1</member>
 			<member name="description" type="string"/>
 			<member name="comment" type="string"/>
@@ -1211,7 +1211,7 @@
 			<member name="unit" type="string">unit</member>
 			<member name="period" type="sint32">1000</member>
 			<member name="address" type="string">registers.readall_value[0]</member>
-			<member name="last_addr" type="uint32">0x20000096</member>
+			<member name="last_addr" type="uint32">0x200000DE</member>
 			<member name="byte_size" type="sint32">1</member>
 			<member name="description" type="string"/>
 			<member name="comment" type="string"/>
@@ -1260,7 +1260,7 @@
 			<member name="unit" type="string">DegC</member>
 			<member name="period" type="sint32">1000</member>
 			<member name="address" type="string">registers.temp</member>
-			<member name="last_addr" type="uint32">0x20000127</member>
+			<member name="last_addr" type="uint32">0x2000016F</member>
 			<member name="byte_size" type="sint32">1</member>
 			<member name="description" type="string"/>
 			<member name="comment" type="string"/>
@@ -1309,7 +1309,7 @@
 			<member name="unit" type="string">unit</member>
 			<member name="period" type="sint32">0</member>
 			<member name="address" type="string">registers.sdcd</member>
-			<member name="last_addr" type="uint32">0x20000126</member>
+			<member name="last_addr" type="uint32">0x2000016E</member>
 			<member name="byte_size" type="sint32">1</member>
 			<member name="description" type="string"/>
 			<member name="comment" type="string"/>
@@ -1358,7 +1358,7 @@
 			<member name="unit" type="string">unit</member>
 			<member name="period" type="sint32">0</member>
 			<member name="address" type="string">registers.odr_value</member>
-			<member name="last_addr" type="uint32">0x200000D6</member>
+			<member name="last_addr" type="uint32">0x2000011E</member>
 			<member name="byte_size" type="sint32">1</member>
 			<member name="description" type="string"/>
 			<member name="comment" type="string"/>
@@ -1407,7 +1407,7 @@
 			<member name="unit" type="string">unit</member>
 			<member name="period" type="sint32">1000</member>
 			<member name="address" type="string">registers.trigger_selftest</member>
-			<member name="last_addr" type="uint32">0x200000D3</member>
+			<member name="last_addr" type="uint32">0x2000011B</member>
 			<member name="byte_size" type="sint32">1</member>
 			<member name="description" type="string"/>
 			<member name="comment" type="string"/>
@@ -1456,7 +1456,7 @@
 			<member name="unit" type="string">unit</member>
 			<member name="period" type="sint32">1000</member>
 			<member name="address" type="string">selftest.x_stoc</member>
-			<member name="last_addr" type="uint32">0x20000150</member>
+			<member name="last_addr" type="uint32">0x20000198</member>
 			<member name="byte_size" type="sint32">2</member>
 			<member name="description" type="string"/>
 			<member name="comment" type="string"/>
@@ -1505,7 +1505,7 @@
 			<member name="unit" type="string">unit</member>
 			<member name="period" type="sint32">1000</member>
 			<member name="address" type="string">selftest.y_stoc</member>
-			<member name="last_addr" type="uint32">0x20000152</member>
+			<member name="last_addr" type="uint32">0x2000019A</member>
 			<member name="byte_size" type="sint32">2</member>
 			<member name="description" type="string"/>
 			<member name="comment" type="string"/>
@@ -1554,7 +1554,7 @@
 			<member name="unit" type="string">unit</member>
 			<member name="period" type="sint32">1000</member>
 			<member name="address" type="string">selftest.z_stoc</member>
-			<member name="last_addr" type="uint32">0x20000154</member>
+			<member name="last_addr" type="uint32">0x2000019C</member>
 			<member name="byte_size" type="sint32">2</member>
 			<member name="description" type="string"/>
 			<member name="comment" type="string"/>
@@ -1603,7 +1603,7 @@
 			<member name="unit" type="string">unit</member>
 			<member name="period" type="sint32">1000</member>
 			<member name="address" type="string">selftest.x_stof</member>
-			<member name="last_addr" type="uint32">0x20000156</member>
+			<member name="last_addr" type="uint32">0x2000019E</member>
 			<member name="byte_size" type="sint32">2</member>
 			<member name="description" type="string"/>
 			<member name="comment" type="string"/>
@@ -1652,7 +1652,7 @@
 			<member name="unit" type="string">unit</member>
 			<member name="period" type="sint32">1000</member>
 			<member name="address" type="string">selftest.y_stof</member>
-			<member name="last_addr" type="uint32">0x20000158</member>
+			<member name="last_addr" type="uint32">0x200001A0</member>
 			<member name="byte_size" type="sint32">2</member>
 			<member name="description" type="string"/>
 			<member name="comment" type="string"/>
@@ -1701,7 +1701,7 @@
 			<member name="unit" type="string">unit</member>
 			<member name="period" type="sint32">1000</member>
 			<member name="address" type="string">selftest.z_stof</member>
-			<member name="last_addr" type="uint32">0x2000015A</member>
+			<member name="last_addr" type="uint32">0x200001A2</member>
 			<member name="byte_size" type="sint32">2</member>
 			<member name="description" type="string"/>
 			<member name="comment" type="string"/>
@@ -1750,7 +1750,7 @@
 			<member name="unit" type="string">unit</member>
 			<member name="period" type="sint32">1000</member>
 			<member name="address" type="string">selftest.complete_selftest</member>
-			<member name="last_addr" type="uint32">0x2000015C</member>
+			<member name="last_addr" type="uint32">0x200001A4</member>
 			<member name="byte_size" type="sint32">1</member>
 			<member name="description" type="string"/>
 			<member name="comment" type="string"/>
@@ -1799,7 +1799,7 @@
 			<member name="unit" type="string">unit</member>
 			<member name="period" type="sint32">0</member>
 			<member name="address" type="string">registers.timestamp</member>
-			<member name="last_addr" type="uint32">0x20000130</member>
+			<member name="last_addr" type="uint32">0x20000178</member>
 			<member name="byte_size" type="sint32">4</member>
 			<member name="description" type="string"/>
 			<member name="comment" type="string"/>
@@ -1879,6 +1879,7 @@
 			<member name="size_as_hex" type="sint32">1</member>
 			<member name="size_shift" type="sint32">0</member>
 			<member name="size_shift_right" type="sint32">0</member>
+			<member name="type_index" type="sint32">-1</member>
 		</object>
 		<object name="ObjId0027" type="CPrjDoc_RxpFileType">
 			<member name="type_name" type="string">aaa</member>
@@ -1892,6 +1893,7 @@
 			<member name="size_as_hex" type="sint32">1</member>
 			<member name="size_shift" type="sint32">0</member>
 			<member name="size_shift_right" type="sint32">0</member>
+			<member name="type_index" type="sint32">-1</member>
 		</object>
 		<object name="ObjId0028" type="CPrjDoc_RxpFileType">
 			<member name="type_name" type="string">HawkV1 xMap parser</member>
@@ -1905,6 +1907,7 @@
 			<member name="size_as_hex" type="sint32">1</member>
 			<member name="size_shift" type="sint32">0</member>
 			<member name="size_shift_right" type="sint32">0</member>
+			<member name="type_index" type="sint32">-1</member>
 		</object>
 		<object name="ObjId0029" type="CPrjDoc_RxpFileType">
 			<member name="type_name" type="string">TI map file</member>
@@ -1918,6 +1921,7 @@
 			<member name="size_as_hex" type="sint32">1</member>
 			<member name="size_shift" type="sint32">0</member>
 			<member name="size_shift_right" type="sint32">0</member>
+			<member name="type_index" type="sint32">-1</member>
 		</object>
 		<object name="ObjId0030" type="CPrjDoc_RxpFileType">
 			<member name="type_name" type="string">syc</member>
@@ -1931,6 +1935,7 @@
 			<member name="size_as_hex" type="sint32">1</member>
 			<member name="size_shift" type="sint32">0</member>
 			<member name="size_shift_right" type="sint32">0</member>
+			<member name="type_index" type="sint32">-1</member>
 		</object>
 		<object name="ObjId0031" type="CPrjDoc_RxpFileType">
 			<member name="type_name" type="string">Cosmic_HCS08</member>
@@ -1944,6 +1949,7 @@
 			<member name="size_as_hex" type="sint32">1</member>
 			<member name="size_shift" type="sint32">0</member>
 			<member name="size_shift_right" type="sint32">0</member>
+			<member name="type_index" type="sint32">-1</member>
 		</object>
 		<object name="ObjId0032" type="CPrjDoc_RxpFileType">
 			<member name="type_name" type="string">microchip</member>
@@ -1957,6 +1963,7 @@
 			<member name="size_as_hex" type="sint32">1</member>
 			<member name="size_shift" type="sint32">0</member>
 			<member name="size_shift_right" type="sint32">0</member>
+			<member name="type_index" type="sint32">-1</member>
 		</object>
 		<object name="ObjId0033" type="CPrjDoc_RxpFileType">
 			<member name="type_name" type="string">MicroChip</member>
@@ -1970,6 +1977,7 @@
 			<member name="size_as_hex" type="sint32">1</member>
 			<member name="size_shift" type="sint32">0</member>
 			<member name="size_shift_right" type="sint32">0</member>
+			<member name="type_index" type="sint32">-1</member>
 		</object>
 		<object name="ObjId0034" type="CPrjDoc_RxpFileType">
 			<member name="type_name" type="string">CodeWarrior ColdFire xMAP</member>
@@ -1983,6 +1991,7 @@
 			<member name="size_as_hex" type="sint32">1</member>
 			<member name="size_shift" type="sint32">0</member>
 			<member name="size_shift_right" type="sint32">0</member>
+			<member name="type_index" type="sint32">-1</member>
 		</object>
 		<object name="ObjId0035" type="CPrjDoc_RxpFileType">
 			<member name="type_name" type="string">TI map file</member>
@@ -1996,6 +2005,7 @@
 			<member name="size_as_hex" type="sint32">1</member>
 			<member name="size_shift" type="sint32">0</member>
 			<member name="size_shift_right" type="sint32">0</member>
+			<member name="type_index" type="sint32">-1</member>
 		</object>
 		<object name="ObjId0036" type="CPrjDoc_RxpFileType">
 			<member name="type_name" type="string">CodeWarrior ColdFire xMAP gyro</member>
@@ -2009,6 +2019,7 @@
 			<member name="size_as_hex" type="sint32">1</member>
 			<member name="size_shift" type="sint32">0</member>
 			<member name="size_shift_right" type="sint32">0</member>
+			<member name="type_index" type="sint32">-1</member>
 		</object>
 		<object name="ObjId0037" type="CPrjDoc_RxpFileType">
 			<member name="type_name" type="string">ColdFire xMAP - gyro</member>
@@ -2022,6 +2033,7 @@
 			<member name="size_as_hex" type="sint32">1</member>
 			<member name="size_shift" type="sint32">0</member>
 			<member name="size_shift_right" type="sint32">0</member>
+			<member name="type_index" type="sint32">-1</member>
 		</object>
 		<object name="ObjId0038" type="CObList"/>
 		<object name="ObjId0617" type="CStringList"/>
@@ -2281,6 +2293,7 @@
 			<member name="graph_x_max" type="real64">1.00000000000000000000e+02</member>
 			<member name="graph_x_min_auto" type="sint32">1</member>
 			<member name="graph_x_max_auto" type="sint32">1</member>
+			<member name="graph_break_line" type="sint32">0</member>
 			<member name="graph_var_count" type="sint32">4</member>
 			<member name="var_count" type="sint32">4</member>
 			<member name="xvar" type="CObject_ptr">ObjId0598</member>
@@ -2297,7 +2310,7 @@
 			<member name="scope_period" type="real64">0.00000000000000000000e+00</member>
 			<member name="scope_x_autoscale" type="sint32">1</member>
 			<member name="scope_x_width" type="real64">1.00000000000000000000e+01</member>
-			<member name="scope_ignore_duplicity" type="sint32">1</member>
+			<member name="scope_ignore_duplicity" type="sint32">0</member>
 			<member name="data_capture_mode" type="sint32">0</member>
 			<member name="data_capture_onaction" type="sint32">0</member>
 			<member name="data_capture_file_type" type="sint32">0</member>
@@ -2501,6 +2514,7 @@
 			<member name="graph_x_max" type="real64">1.00000000000000000000e+02</member>
 			<member name="graph_x_min_auto" type="sint32">1</member>
 			<member name="graph_x_max_auto" type="sint32">1</member>
+			<member name="graph_break_line" type="sint32">0</member>
 			<member name="graph_var_count" type="sint32">3</member>
 			<member name="var_count" type="sint32">3</member>
 			<member name="var0_info" type="CPrjItemRS_VarInfo">ObjId0415</member>

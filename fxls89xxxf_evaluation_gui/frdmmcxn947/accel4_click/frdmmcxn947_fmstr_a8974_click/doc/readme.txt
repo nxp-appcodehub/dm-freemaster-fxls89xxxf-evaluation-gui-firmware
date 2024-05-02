@@ -24,15 +24,15 @@ Connect with FreeMASTER
 =======================
 4.  Launch FreeMASTER application installed on your Windows PC.
 5.  Click on "Connection Wizard" and select Next>.
-6.  Select “Use direct connection to on board USB port” and click Next>.
-7.  The FreeMASTER tool detects the COM port (Select the identified COM port on next screen) with the configured baud-rate automatically. Confirm the COM port and baud-rate, click “Next>”.
-8.  FreeMASTER detects the board connection and will ask to confirm the detected settings. Confirm by selecting “Yes” and click “Finish”.
-9.  FreeMASTER opens an option to “Open an Existing Project”. Select the option.
-10. Browse to “<dm-freemaster-fxls89xxxf-evaluation-gui-firmware/fxls89xxxf_evaluation_gui/frdmmcxn947/freemaster_gui/sensors/fxls8974cf” folder.
-11. Select “FXLS897xCF_Evaluation_Demo.pmpx” sensor demo project. Click “Open”.
+6.  Select "Use direct connection to on board USB port" and click Next>.
+7.  The FreeMASTER tool detects the COM port (Select the identified COM port on next screen) with the configured baud-rate automatically. Confirm the COM port and baud-rate, click ï¿½Next>ï¿½.
+8.  FreeMASTER detects the board connection and will ask to confirm the detected settings. Confirm by selecting ï¿½Yesï¿½ and click ï¿½Finishï¿½.
+9.  FreeMASTER opens an option to "Open an Existing Project". Select the option.
+10. Browse to "<dm-freemaster-fxls89xxxf-evaluation-gui-firmware/fxls89xxxf_evaluation_gui/frdmmcxn947/freemaster_gui/sensors/fxls8974cf" folder.
+11. Select "FXLS897xCF_Evaluation_Demo.pmpx" sensor demo project. Click "Open".
 12. FreeMASTER launches the FXLS8974CF sensor demo and opens the control page where user can see sensor power control selections, FS/ODR selections, Offset/Noise measurement selection, along with time-series charts for accelerometer samples.
-13. Click “FXLS8974CF Register Page” tab to access the FXLS8974CF register set. Click “Read All” to view instantaneous values of the FXLS8974CF sensor registers in real time.
-14. Users can select specific registers and perform single register read or write actions in real time. For a chosen sensor register with read/write access, users can toggle bitfields to change the register value and click “Write” to perform register write operation and/or perform register read by clicking “Read”.
+13. Click "FXLS8974CF Register Page" tab to access the FXLS8974CF register set. Click "Read All" to view instantaneous values of the FXLS8974CF sensor registers in real time.
+14. Users can select specific registers and perform single register read or write actions in real time. For a chosen sensor register with read/write access, users can toggle bitfields to change the register value and click ï¿½Writeï¿½ to perform register write operation and/or perform register read by clicking "Read".
 
 
 More information

@@ -10,7 +10,7 @@
 **
 **     Reference manual:    MCXNx4x Reference Manual
 **     Version:             rev. 2.0, 2023-02-01
-**     Build:               b231026
+**     Build:               b231219
 **
 **     Abstract:
 **         Provides a system configuration function and a global variable that
@@ -93,9 +93,14 @@ __attribute__ ((weak)) void SystemInit (void) {
     /* enable the flash cache LPCAC */
     SYSCON->LPCAC_CTRL &= ~SYSCON_LPCAC_CTRL_DIS_LPCAC_MASK;
 
-    /* Disable aGDET */
+    /* Disable aGDET trigger the CHIP_RESET */
+    ITRC0->OUT_SEL[4][0] = (ITRC0->OUT_SEL[4][0] & ~ITRC_OUTX_SEL_OUTX_SELY_OUT_SEL_IN9_SELn_MASK) | (ITRC_OUTX_SEL_OUTX_SELY_OUT_SEL_IN9_SELn(0x2));
+    ITRC0->OUT_SEL[4][1] = (ITRC0->OUT_SEL[4][1] & ~ITRC_OUTX_SEL_OUTX_SELY_OUT_SEL_IN9_SELn_MASK) | (ITRC_OUTX_SEL_OUTX_SELY_OUT_SEL_IN9_SELn(0x2));
+    /* Disable aGDET interrupt and reset */
     SPC0->ACTIVE_CFG |= SPC_ACTIVE_CFG_GLITCH_DETECT_DISABLE_MASK;
-    SPC0->VDD_CORE_GLITCH_DETECT_SC = 0x3C;
+    SPC0->GLITCH_DETECT_SC &= ~SPC_GLITCH_DETECT_SC_LOCK_MASK;
+    SPC0->GLITCH_DETECT_SC = 0x3C;
+    SPC0->GLITCH_DETECT_SC |= SPC_GLITCH_DETECT_SC_LOCK_MASK;
 
     /* Disable dGDET trigger the CHIP_RESET */
     ITRC0->OUT_SEL[4][0] = (ITRC0->OUT_SEL[4][0] & ~ ITRC_OUTX_SEL_OUTX_SELY_OUT_SEL_IN0_SELn_MASK) | (ITRC_OUTX_SEL_OUTX_SELY_OUT_SEL_IN0_SELn(0x2));
