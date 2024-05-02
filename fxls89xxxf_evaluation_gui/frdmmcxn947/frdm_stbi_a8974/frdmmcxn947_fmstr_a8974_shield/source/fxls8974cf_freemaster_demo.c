@@ -97,7 +97,6 @@ const registerwritelist_t cFxls8974ConfigNormal[] = {
 /*! @brief Register settings for Self-Test in X Axis (Positive polarity). */
 const registerwritelist_t cFxls8974STXP[] = {
     /* Set Self Test Axis. */
-    {FXLS8974_SENS_CONFIG1, FXLS8974_SENS_CONFIG1_FSR_16G, FXLS8974_SENS_CONFIG1_FSR_MASK},
     {FXLS8974_SENS_CONFIG1, FXLS8974_SENS_CONFIG1_ST_AXIS_SEL_EN_X, FXLS8974_SENS_CONFIG1_ST_AXIS_SEL_MASK},
     {FXLS8974_SENS_CONFIG1, FXLS8974_SENS_CONFIG1_ST_POL_POSITIVE,  FXLS8974_SENS_CONFIG1_ST_POL_MASK},
     {FXLS8974_SENS_CONFIG1, FXLS8974_SENS_CONFIG1_ACTIVE_ACTIVE, FXLS8974_SENS_CONFIG1_ACTIVE_MASK},
@@ -106,7 +105,6 @@ const registerwritelist_t cFxls8974STXP[] = {
 /*! @brief Register settings for Self-Test in X Axis (Negative polarity). */
 const registerwritelist_t cFxls8974STXN[] = {
     /* Set Self Test Axis. */
-    {FXLS8974_SENS_CONFIG1, FXLS8974_SENS_CONFIG1_FSR_16G, FXLS8974_SENS_CONFIG1_FSR_MASK},
     {FXLS8974_SENS_CONFIG1, FXLS8974_SENS_CONFIG1_ST_AXIS_SEL_EN_X, FXLS8974_SENS_CONFIG1_ST_AXIS_SEL_MASK},
     {FXLS8974_SENS_CONFIG1, FXLS8974_SENS_CONFIG1_ST_POL_NEGATIVE, FXLS8974_SENS_CONFIG1_ST_POL_MASK},
     {FXLS8974_SENS_CONFIG1, FXLS8974_SENS_CONFIG1_ACTIVE_ACTIVE, FXLS8974_SENS_CONFIG1_ACTIVE_MASK},
@@ -115,7 +113,6 @@ const registerwritelist_t cFxls8974STXN[] = {
 /*! @brief Register settings for Self-Test in Y Axis (Positive polarity). */
 const registerwritelist_t cFxls8974STYP[] = {
     /* Set Self Test Axis. */
-    {FXLS8974_SENS_CONFIG1, FXLS8974_SENS_CONFIG1_FSR_16G, FXLS8974_SENS_CONFIG1_FSR_MASK},
     {FXLS8974_SENS_CONFIG1, FXLS8974_SENS_CONFIG1_ST_AXIS_SEL_EN_Y, FXLS8974_SENS_CONFIG1_ST_AXIS_SEL_MASK},
     {FXLS8974_SENS_CONFIG1, FXLS8974_SENS_CONFIG1_ST_POL_POSITIVE,FXLS8974_SENS_CONFIG1_ST_POL_MASK},
     {FXLS8974_SENS_CONFIG1, FXLS8974_SENS_CONFIG1_ACTIVE_ACTIVE, FXLS8974_SENS_CONFIG1_ACTIVE_MASK},
@@ -124,7 +121,6 @@ const registerwritelist_t cFxls8974STYP[] = {
 /*! @brief Register settings for Self-Test in Y Axis (Negative polarity). */
 const registerwritelist_t cFxls8974STYN[] = {
     /* Set Self Test Axis. */
-    {FXLS8974_SENS_CONFIG1, FXLS8974_SENS_CONFIG1_FSR_16G, FXLS8974_SENS_CONFIG1_FSR_MASK},
     {FXLS8974_SENS_CONFIG1, FXLS8974_SENS_CONFIG1_ST_AXIS_SEL_EN_Y, FXLS8974_SENS_CONFIG1_ST_AXIS_SEL_MASK},
     {FXLS8974_SENS_CONFIG1, FXLS8974_SENS_CONFIG1_ST_POL_NEGATIVE, FXLS8974_SENS_CONFIG1_ST_POL_MASK},
     {FXLS8974_SENS_CONFIG1, FXLS8974_SENS_CONFIG1_ACTIVE_ACTIVE, FXLS8974_SENS_CONFIG1_ACTIVE_MASK},
@@ -133,7 +129,6 @@ const registerwritelist_t cFxls8974STYN[] = {
 /*! @brief Register settings for Self-Test in Z Axis (Positive polarity). */
 const registerwritelist_t cFxls8974STZP[] = {
     /* Set Self Test Axis. */
-    {FXLS8974_SENS_CONFIG1, FXLS8974_SENS_CONFIG1_FSR_16G, FXLS8974_SENS_CONFIG1_FSR_MASK},
     {FXLS8974_SENS_CONFIG1, FXLS8974_SENS_CONFIG1_ST_AXIS_SEL_EN_Z, FXLS8974_SENS_CONFIG1_ST_AXIS_SEL_MASK},
     {FXLS8974_SENS_CONFIG1, FXLS8974_SENS_CONFIG1_ST_POL_POSITIVE, FXLS8974_SENS_CONFIG1_ST_POL_MASK},
     {FXLS8974_SENS_CONFIG1, FXLS8974_SENS_CONFIG1_ACTIVE_ACTIVE, FXLS8974_SENS_CONFIG1_ACTIVE_MASK},
@@ -142,7 +137,6 @@ const registerwritelist_t cFxls8974STZP[] = {
 /*! @brief Register settings for Self-Test in Z Axis (Negative polarity). */
 const registerwritelist_t cFxls8974STZN[] = {
     /* Set Self Test Axis. */
-    {FXLS8974_SENS_CONFIG1, FXLS8974_SENS_CONFIG1_FSR_16G, FXLS8974_SENS_CONFIG1_FSR_MASK},
     {FXLS8974_SENS_CONFIG1, FXLS8974_SENS_CONFIG1_ST_AXIS_SEL_EN_Z, FXLS8974_SENS_CONFIG1_ST_AXIS_SEL_MASK},
     {FXLS8974_SENS_CONFIG1, FXLS8974_SENS_CONFIG1_ST_POL_NEGATIVE,  FXLS8974_SENS_CONFIG1_ST_POL_MASK},
     {FXLS8974_SENS_CONFIG1, FXLS8974_SENS_CONFIG1_ACTIVE_ACTIVE, FXLS8974_SENS_CONFIG1_ACTIVE_MASK},
@@ -276,6 +270,8 @@ gpio_pin_config_t int1_config = {
     kGPIO_DigitalInput,
     0,
 };
+
+uint8_t regdata;
 
 /*******************************************************************************
  * Local functions
@@ -493,7 +489,6 @@ int main(void)
 {
     int32_t status;
     uint8_t whoami = 0;
-    uint8_t regdata;
     float sensitivity = ACCEL_4G_SENS;
 
     ARM_DRIVER_I2C *I2Cdrv = &I2C_S_DRIVER; // Now using the shield.h value!!!
@@ -697,18 +692,22 @@ int main(void)
         if ((regdata & FXLS8974_SENS_CONFIG1_FSR_MASK) == 2)
         {
             sensitivity = ACCEL_4G_SENS;
+            regdata =2;
         }
         else if ((regdata & FXLS8974_SENS_CONFIG1_FSR_MASK) == 4)
         {
             sensitivity = ACCEL_8G_SENS;
+            regdata = 4;
         }
         else if ((regdata & FXLS8974_SENS_CONFIG1_FSR_MASK) == 6)
         {
             sensitivity = ACCEL_16G_SENS;
+            regdata = 6;
         }
         else
         {
             sensitivity = ACCEL_2G_SENS;
+            regdata = 0;
         }
 
         /*! Convert raw values to Gs */
@@ -1011,6 +1010,17 @@ int32_t perform_selftest(fxls8974_i2c_sensorhandle_t fxls8974Driver, fxls8974_se
 
     /* Initialize self-test parameters */
 	selftest_init(selftest);
+
+	registerwritelist_t fxls8974_set_fsr[] = {
+	     /*! Set register offset with provided value */
+	     {FXLS8974_SENS_CONFIG1, regdata, FXLS8974_SENS_CONFIG1_FSR_MASK},
+	      __END_WRITE_DATA__};
+
+    status = FXLS8974_I2C_Configure(&fxls8974Driver, fxls8974_set_fsr);
+    if (SENSOR_ERROR_NONE != status)
+    {
+        return SENSOR_ERROR_WRITE;
+    }
 
 	while (axis<6)
 	{
