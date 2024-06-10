@@ -13,6 +13,12 @@
 
     [<img src="./images/Sensors_Development_Ecosystem.png" width="700"/>](Sensors_Development_Ecosystem.png)
 
+- FXLS8974CF is 3-axis accelerometer targeted for application requiring low-power motion wake up. This sensor has SDCD embedded block which implements an efficient and flexible inertial event detection function to detect various inertial events like no-motion/motion, tap, freefall, transient events etc. This ultra-low power wake-up on motion can trigger host MCU to wake-up or go back to deep sleep mode when no motion detected autonomously.
+
+- Target applications include a wide range of industrial and medical IOT applications that require ultra-low-power wake-up on motion:
+Asset Tracking/ Inventory Management, Smart Meter, Tamper Detection, Machine Condition Monitoring, Portable Electronics, Wearables, Power Optimization, smart home, smart factories, smart healthcare etc.
+
+
 - #### Boards: FRDM-MCXN947
 - #### Accessories: nxp_frdm_stbi_a8974, mikroe_accel_4_click
 - #### Categories: Sensor, Tools
@@ -50,10 +56,10 @@
 - Install Git v2.39.0 (for cloning and running west commands)
 - Download [FreeMASTER v3.2.2 or newer](https://www.nxp.com/webapp/sps/download/license.jsp?colCode=FMASTERSW32&appType=file1&DOWNLOAD_ID=null) and install following the installer instructions.
 
-### 3.2 Step 2: Clone the APP-CODE-HUB/dm-freemaster_fxls89xxxf_evaluation_gui
+### 3.2 Step 2: Clone the APP-CODE-HUB/dm-freemaster-fxls89xxxf-evaluation-gui-firmware
 - Clone this repository to get the example projects:
 - Change directory to cloned project folder:<br>
-    cd *dm-freemaster_fxls89xxxf_evaluation_gui_firmware*
+    cd *dm-freemaster-fxls89xxxf-evaluation-gui-firmware*
 
 ### 3.3 Step 3: Build example projects
 - Open MCUXpresso IDE and select a directory to create your workspace.
@@ -62,6 +68,11 @@
 - Select "Project directory (unpacked)" and browse to the cloned project folder.
 - Select example projects that you want to open and run.
 - Right click on project and select build to start building the project.
+
+### 3.4 Step 4: Perform following board settings (in case you are using FRDM-STBI-A8974 shield board)
+- Since the examples use I2C, Pins 2-3 of SW2 on FRDM-STBI-A8974 should be connected.
+- Connect pins 1-2 on jumpers J7 and J8 to select I2C0 on FRDM-STBI-A8974 shield board.
+- SW1 Pins 2-3 should be connected to select default operating mode i.e. "ACCEL NORMAL" mode.
 
 ## 4. Run Example Projects<a name="step4"></a>
 - Connect the chosen example project HW: FRDM-MCXN947 with FRDM-STBI-A8974 or Accel4 click.
@@ -79,7 +90,7 @@
 - FreeMASTER detects the board connection and will ask to confirm the detected settings. Confirm by selecting “Yes” and click “Finish”.
 - FreeMASTER opens an option to “Open an Existing Project”. Select the option. <br>
  [<img src="./images/Open_Project.png" width="700"/>](Open_Project.png)
-- Browse to “<dm-freemaster_fxls89xxxf_evaluation_gui/fxls89xxxf_evaluation_gui/frdmmcxn947/freemaster_gui/sensors/fxls8974cf” folder
+- Browse to “<dm-freemaster-fxls89xxxf-evaluation-gui-firmware/fxls89xxxf_evaluation_gui/frdmmcxn947/freemaster_gui/sensors/fxls8974cf” folder
 - Select “FXLS897xCF_Evaluation_Demo.pmpx” sensor demo project. Click “Open”. <br>
  [<img src="./images/Select_Project.png" width="700"/>](Select_Project.png)
 - FreeMASTER launches the FXLS8974CF sensor demo and opens the control page where user can see sensor power control selections, FS/ODR selections, Offset/Noise measurement selection, along with time-series charts for accelerometer samples. <br>
