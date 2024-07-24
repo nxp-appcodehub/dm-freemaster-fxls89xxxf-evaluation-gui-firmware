@@ -20,7 +20,7 @@ Asset Tracking/ Inventory Management, Smart Meter, Tamper Detection, Machine Con
 
 
 - #### Boards: FRDM-MCXN947
-- #### Accessories: nxp_frdm_stbi_a8974, mikroe_accel_4_click
+- #### Accessories: nxp_frdm_stbi_a8974, nxp_frdm_stbi_a8971, nxp_frdm_stba_a8961, mikroe_accel_4_click, mikroe_inclinometer_4_click
 - #### Categories: Sensor, Tools
 - #### Peripherals: I2C, UART, SENSOR
 - #### Toolchains: MCUXpresso IDE
@@ -43,7 +43,10 @@ Asset Tracking/ Inventory Management, Smart Meter, Tamper Detection, Machine Con
 ## 2. Hardware<a name="step2"></a>
 - [FRDM-MCXN947 MCU board](https://www.nxp.com/part/FRDM-MCXN947)
 - [FRDM-STBI-A8974 sensor board](https://mcuxpresso.nxp.com/eb-hub/product/frdm-stbi-a8974) Or
-- [Accel4 sensor click](https://www.mikroe.com/accel-4-click)
+- [FRDM-STBI-A8974 sensor board](https://mcuxpresso.nxp.com/eb-hub/product/frdm-stbi-a8971) Or
+- [FRDM-STBI-A8974 sensor board](https://mcuxpresso.nxp.com/eb-hub/product/frdm-stba-a8961) Or
+- [Accel 4 sensor click](https://www.mikroe.com/accel-4-click)
+- [Inclinometer 4 sensor click](https://www.mikroe.com/inclinometer-4-click)
 - Personal Computer
 - Mini/micro C USB cable
 
@@ -70,12 +73,12 @@ Asset Tracking/ Inventory Management, Smart Meter, Tamper Detection, Machine Con
 - Right click on project and select build to start building the project.
 
 ### 3.4 Step 4: Perform following board settings (in case you are using FRDM-STBI-A8974 shield board)
-- Since the examples use I2C, Pins 2-3 of SW2 on FRDM-STBI-A8974 should be connected.
-- Connect pins 1-2 on jumpers J7 and J8 to select I2C0 on FRDM-STBI-A8974 shield board.
+- Since the examples use I2C, Pins 2-3 of SW2 on FRDM-STBI-A8974 or FRDM-STBI-A8971 or FRDM-STBA-A8961 shield board should be connected.
+- Connect pins 1-2 on jumpers J7 and J8 to select I2C0 on FRDM-STBI-A8974 or FRDM-STBI-A8971 or FRDM-STBA-A8961 shield board.
 - SW1 Pins 2-3 should be connected to select default operating mode i.e. "ACCEL NORMAL" mode.
 
 ## 4. Run Example Projects<a name="step4"></a>
-- Connect the chosen example project HW: FRDM-MCXN947 with FRDM-STBI-A8974 or Accel4 click.
+- Connect the chosen example project HW: FRDM-MCXN947 with FRDM-STBI-A8974 or FRDM-STBI-A8971 or FRDM-STBA-A8961 or Accel4 click or Inclinometer4 click.
 - Right click on project and select "Debug As". Select MCUXpresso IDE LinkServer (inc. CMSIS DAP) probes.
 - Connect a USB cable between the host PC and the MCU-Link USB port on the target board.
 - Either press the reset button on your board or launch the debugger in your IDE to begin running the demo.
@@ -104,13 +107,15 @@ Asset Tracking/ Inventory Management, Smart Meter, Tamper Detection, Machine Con
 - Reach out to NXP Sensors Community page for more support - [NXP Community](https://community.nxp.com/t5/forums/postpage/choose-node/true?_gl=1*fxvsn4*_ga*MTg2MDYwNjMzMy4xNzAyNDE4NzM0*_ga_WM5LE0KMSH*MTcwMjQxODczMy4xLjEuMTcwMjQxODczNi4wLjAuMA..)
 - For more details on FXLS8974CF SDCD block, refer to the application note - [AN12004](https://www.nxp.com/docs/en/application-note/AN12004.pdf)
 - Learn more about FXLS8974CF 3-axis accelerometer, refer to - [FXLS8974CF DS](https://www.nxp.com/docs/en/data-sheet/FXLS8974CF.pdf)
+- Learn more about FXLS8971CF 3-axis accelerometer, refer to - [FXLS8971CF DS](https://www.nxp.com/docs/en/data-sheet/FXLS8971CF.pdf)
+- Learn more about FXLS8961AF 3-axis accelerometer, refer to - [FXLS8961AF DS](https://www.nxp.com/docs/en/data-sheet/FXLS8961AF.pdf)
 - Accelerate your sensors development using Sensor ToolBox, refer to - [Sensors Development Ecosystem](https://www.nxp.com/design/design-center/software/sensor-toolbox:SENSOR-TOOLBOXX)
 
 #### Project Metadata
 <!----- Boards ----->
 [![Board badge](https://img.shields.io/badge/Board-FRDM&ndash;MCXN947-blue)](https://github.com/search?q=org%3Anxp-appcodehub+FRDM-MCXN947+in%3Areadme&type=Repositories)
 <!----- Accessories ----->
-[![Accessory badge](https://img.shields.io/badge/Board-FRDM&ndash;STBI&ndash;A8974-red)](https://github.com/search?q=org%3Anxp-appcodehub+FRDM-STBI-A8974+in%3Areadme&type=Repositories) [![Accessory badge](https://img.shields.io/badge/Board-ACCEL&ndash;4&ndash;CLICK-red)](https://github.com/search?q=org%3Anxp-appcodehub+ACCEL4-CLICK+in%3Areadme&type=Repositories)
+[![Accessory badge](https://img.shields.io/badge/Board-FRDM&ndash;STBI&ndash;A8974-red)](https://github.com/search?q=org%3Anxp-appcodehub+FRDM-STBI-A8974+in%3Areadme&type=Repositories) [![Accessory badge](https://img.shields.io/badge/Board-FRDM&ndash;STBI&ndash;A8971-red)](https://github.com/search?q=org%3Anxp-appcodehub+FRDM-STBI-A8971+in%3Areadme&type=Repositories) [![Accessory badge](https://img.shields.io/badge/Board-FRDM&ndash;STBA&ndash;A8961-red)](https://github.com/search?q=org%3Anxp-appcodehub+FRDM-STBA-A8961+in%3Areadme&type=Repositories) [![Accessory badge](https://img.shields.io/badge/Board-ACCEL&ndash;4&ndash;CLICK-red)](https://github.com/search?q=org%3Anxp-appcodehub+ACCEL4-CLICK+in%3Areadme&type=Repositories) [![Accessory badge](https://img.shields.io/badge/Board-INCLINOMETER&ndash;4&ndash;CLICK-red)](https://github.com/search?q=org%3Anxp-appcodehub+INCLINOMETER4-CLICK+in%3Areadme&type=Repositories)
 
 <!----- Categories ----->
 [![Category badge](https://img.shields.io/badge/Category-SENSOR-yellowgreen)](https://github.com/search?q=org%3Anxp-appcodehub+sensor+in%3Areadme&type=Repositories) [![Category badge](https://img.shields.io/badge/Category-TOOLS-yellowgreen)](https://github.com/search?q=org%3Anxp-appcodehub+tools+in%3Areadme&type=Repositories)
@@ -134,3 +139,4 @@ Questions regarding the content/correctness of this example can be entered as Is
 | Version | Description / Update                           | Date                        |
 |:-------:|------------------------------------------------|----------------------------:|
 | 1.0     | Initial release on Application Code Hub        | March 15<sup>th</sup> 2024 |
+| 1.1     | Added support for FXLS8971CF/FXLS8961AF accelerometers        | March 31<sup>th</sup> 2024 

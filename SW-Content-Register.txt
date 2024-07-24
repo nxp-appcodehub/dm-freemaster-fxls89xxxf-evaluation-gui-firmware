@@ -1,7 +1,7 @@
 ﻿NXP Software Content Register
 
 Name: dm-freemaster-fxls89xxxf-evaluation-gui
-Version: 1.0
+Version: 1.1
 Outgoing License: BSD-3-Clause
 License File: LICENSE.txt
 Description: This example demonstrates FXLS89xxxF 3-axis accelerometer evaluation GUI using ISSDK and FreeMASTER for FRDM-MCXN947.
